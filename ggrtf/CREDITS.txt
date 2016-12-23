@@ -1,0 +1,44 @@
+GgrTF Development Team
+======================
+Some developers wish to remain known only under their in-game nicknames.
+
+Matti 'ccr' H‰m‰l‰inen (Ggr Pupunen)
+	- Project leader.
+	- Design and main programming.
+	- User's manual.
+
+Jarkko V‰‰r‰niemi (Jeskko Pupunen)
+	- Additional programming.
+	- Some parts of user's manual.
+	- Testing.
+
+Aloysha
+	- Party Placer-module design and most of the original
+	  implementation. Recoded by Ggr.
+	- Testing.
+
+Ealoren Pupunen
+	- Restructured the hitstats to work with battle listen
+	  levels 2 and 3 instead of only 3.
+	- Support for some prots.
+	- Original nun-module.
+
+Cutter & Dazzt
+	- Graciously provided their original code which was slightly
+	  modified into the spellnames-module.
+
+Jutom Pupunen
+	- Original code for some guild modules (tiger/evil priest)
+	  and improved code for spiders.
+	- Testing.
+
+
+Testers/helpers
+===============
+Fil
+	- Help and bugreports about TF/Win32 and status line
+	  problems.
+
+Xunisiih
+	- General testing, bug reports, whines.
+

@@ -1,0 +1,95 @@
+body {
+	margin: 1em;
+	background-color: #eee;
+	color: black;
+}
+
+body, p, ul, td, th {
+	font-family: Verdana, Arial, helvetica, sans-serif;
+	font-size: 10pt;
+}
+
+a, a:visited {
+	text-decoration: underline;
+        color: green;
+}
+
+a.ulink, a.ulink:visited {
+	text-decoration: underline;
+        color: #333;
+}
+
+a:hover {
+	text-decoration: underline;
+	color: #000;
+}	
+
+a.ulink:hover {
+	text-decoration: underline;
+	color: #;
+}	
+
+
+h1, h2, h3 {
+	font-family: Arial, sans-serif;
+	color: #035;
+	background: #ccc;
+	padding: 4px;
+}
+
+div.titlepage {
+	font-size: 15pt;
+}
+
+table {
+	border: 0px;
+}
+
+/*
+th {
+	padding: 2px;
+	margin: 2px;
+	background: #bbb;
+	color: black;
+	text-align: center;
+}
+
+td {
+	padding: 4px;
+	margin: 2px;
+	color: black;
+}
+*/
+
+div.navheader {
+	color: black;
+	background: gray;
+	padding: 5pt;
+}
+
+div.navheader a {
+	color: white;
+	padding: 5pt;
+	background: #444;
+	-moz-border-radius: 5pt;
+	border-radius: 5pt;
+}
+
+pre.screen {
+	font-weight: bold;
+	padding: 6px;
+	background: black;
+	color: white;
+}
+
+em {
+	font-weight: bold;
+	font-style: normal;
+}
+
+strong.userinput code {
+	padding: 6px;
+	color: yellow;
+	background: black;
+	display: block;
+}

@@ -1,0 +1,60 @@
+GgrTF Coding Guidelines
+=======================
+
+This short text is supposed to become, at some point, a guideline
+for expanding GgrTF and perhaps a simplistic introduction into
+the internals of the "system".
+
+
+General
+=======
+- By convention, tabs are used for indentation.
+
+- Tab width is 4 characters.
+
+- Variable assignations SHOULD use /let or /set, using  constructs
+  such as /test foo:= ... should be avoided, as this has version-
+  specific bugs and incompatibilities.
+
+- Also integer manipulations in expressions should be avoided,
+  again due to bugs. For example TF5.0b6 has a bug in += vs -=.
+
+
+
+Local/temporary variables
+=========================
+- Typically global variables SHOULD be avoided if possible, but as
+  it is, this is impossible or unwieldy in many cases.
+
+- Variable identifiers logically local to the macro MUST begin with
+  underscore ("_"). However, this is NOT tied to the actual scope of
+  the variable, thus in some cases global (/set) variables are
+  considered "local" to the macro and thus marked as such!
+
+
+Naming conventions
+==================
+First of all, it should be noted that not all of the code currently
+follows these conventions, some of the code is old and has not been
+updated to comply.
+
+Macros
+------
+- Macros LOCAL to the module and not intended to be used from other
+  modules MUST be prefixed with "g", such as "gparty_set_foo".
+
+- Macros that may be accessed from other modules SHOULD be prefixed
+  "pr", such as "prdefpprot". Typically these are useful utility
+  functions or core functionality. There may be some exceptions to
+  this rule, in such cases "g"-prefix MUST be used.
+
+- Macros that are meant to be invoked by user interactively or via
+  bindings, SHOULD follow some kind of naming logic too .. possibly
+  depending on the module itself.
+
+Variables
+---------
+- Tables/lists               -> lst_
+- Toggle options             -> opt_
+- Settings (string/integer)  -> set_
+- Runtime counters           -> cnt_

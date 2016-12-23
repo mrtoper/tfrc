@@ -1,0 +1,3467 @@
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V5.0//EN" "/usr/share/xml/docbook/schema/dtd/5.0/docbook.dtd">
+<!-- Define some entities
+<!ENTITY ggrtfver "0.7.4.0">
+<!ENTITY finger "<ulink url='http://www.bat.org/char/$1'>$1</ulink>">
+<!ENTITY jeskko "<ulink url='http://jeskko.pupunen.net/'>Jarkko Vääräniemi</ulink> (&finger Jeskko;)">
+<!ENTITY ggr "<ulink url='http://tnsp.org/~ccr/'>Matti Hämäläinen</ulink> (&finger Ggr;)">
+<!ENTITY tfurl "<ulink url='http://tinyfugue.sf.net/'>TinyFugue</ulink>">
+<!ENTITY homeurl "<ulink url='http://tnsp.org/~ccr/ggrtf/'>http://tnsp.org/~ccr/ggrtf/</ulink>">
+<!ENTITY hgrepourl "http://pupunen.net/hg/ggrtf/">
+<!ENTITY hgrepo "<ulink url='http://pupunen.net/hg/ggrtf/'>Mercurial-repository</ulink>">
+<!ENTITY hgurl "<ulink url='http://www.mercurial-scm.org/'>Mercurial</ulink>">
+<!ENTITY batmudurl "<ulink url='http://www.bat.org/'>BatMUD</ulink>">
+<!ENTITY pupuneturl "<ulink url='http://pupunen.net/'>pupunen.net</ulink>">
+<!ENTITY gnupgurl "<ulink url='http://www.gnupg.org/'>GnuPG</ulink>">
+<!ENTITY trackerurl "<ulink url='http://pupunen.net/mantis/'>bugtracker</ulink>">
+
+<!ENTITY exampletfrc SYSTEM "../example-tfrc.txt">
+<!ENTITY validval "Valid values:">
+<!ENTITY validonoff "<emphasis>on</emphasis>, <emphasis>off</emphasis>">
+
+<!ENTITY colourexplanation "
+Colours described here may deviate from what you actually
+see due to differences in terminal emulation programs and settings.
+">
+
+<!ENTITY sectmacros_1 "<title>Macro commands</title>
+<para>&lt;&gt; = required argument, [] = optional argument">
+
+<!ENTITY sectmacros_2 "<section>
+<title>Macro commands</title>
+<para>&lt;&gt; = required argument, [] = optional argument</para>
+<table><title>Macro commands</title>
+ <tgroup cols='2' align='left'>
+  <thead>
+   <row>
+    <entry>Command</entry>
+    <entry>Description</entry>
+   </row>
+  </thead>
+  <tbody>">
+
+<!ENTITY sectmacros_end "</tbody>
+ </tgroup>
+</table>
+</section>
+">
+
+<!ENTITY paravariables "Variables and user-replaceable macros defined
+by this module are described in a table below. They have specific
+defaults, which you can override in your configuration if you
+re-set/re-define them after loading the module. Please refer to
+<link linkend='inst-config'>Setup</link>-section of this manual
+or see the example configuration for this module.
+">
+
+<!ENTITY sectvariables "
+<title>Settings and user-replaceable macros</title>
+<para>
+&paravariables;
+</para>
+
+<table><title></title>
+ <tgroup cols='2' align='left'>
+  <thead>
+   <row>
+    <entry>Variable / macro name</entry>
+    <entry>Description</entry>
+   </row>
+  </thead>
+  <tbody>
+">
+
+<!ENTITY sectvariablesend "
+  </tbody>
+ </tgroup>
+</table>
+</section>
+">
+
+-->
+<book>
+<bookinfo>
+ <title>The GgrTF v&ggrtfver; User's Guide</title>
+ <authorgroup>
+  <author><firstname>Matti</firstname><surname>Hämäläinen</surname></author>
+  <author><firstname>Jarkko</firstname><surname>Vääräniemi</surname></author>
+ </authorgroup>
+ <copyright>
+  <year>2006-2016</year>
+  <holder>Matti Hämäläinen (Ggr Pupunen)</holder>
+ </copyright>
+ <pubdate>2016</pubdate>
+
+<legalnotice>
+<para>
+This document is distributed under
+<ulink url="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 license</ulink>,
+of which full version can be found from <ulink url="http://creativecommons.org/licenses/by-sa/3.0/legalcode">Creative Commons website</ulink>.
+</para>
+
+<para>
+THE WORK (AS DEFINED BELOW) IS PROVIDED UNDER THE TERMS OF THIS CREATIVE
+COMMONS PUBLIC LICENSE ("CCPL" OR "LICENSE"). THE WORK IS PROTECTED BY
+COPYRIGHT AND/OR OTHER APPLICABLE LAW. ANY USE OF THE WORK OTHER THAN AS
+AUTHORIZED UNDER THIS LICENSE OR COPYRIGHT LAW IS PROHIBITED.
+</para>
+
+<para>
+BY EXERCISING ANY RIGHTS TO THE WORK PROVIDED HERE, YOU ACCEPT AND AGREE
+TO BE BOUND BY THE TERMS OF THIS LICENSE. TO THE EXTENT THIS LICENSE MAY
+BE CONSIDERED TO BE A CONTRACT, THE LICENSOR GRANTS YOU THE RIGHTS CONTAINED
+HERE IN CONSIDERATION OF YOUR ACCEPTANCE OF SUCH TERMS AND CONDITIONS.
+</para>
+</legalnotice>
+</bookinfo>
+
+<!-- *************************************************************** -->
+
+<chapter id="preface"><title>Preface</title>
+
+<section id="whatisggrtf"><title>What is GgrTF?</title>
+
+<para>
+GgrTF is a <emphasis>framework</emphasis> of AND for triggers to
+ease playing of &batmudurl; with &tfurl; MUD-client. GgrTF is designed for
+modularity and easy development. Our primary development goals
+are good overall quality of code and maintainability.
+These are also some of the key elements, that differentiate
+GgrTF from most other publicly available scripts.
+</para>
+
+<para>
+GgrTF is being developed for TF5 of &tfurl; MUD client under Linux
+and Solaris platforms. Users of GgrTF are mostly users of UNIX-like
+systems, but there are several who run TF under Microsoft Windows
+operating system. Version 0.6.9.15 was the last that supported TF4.
+</para>
+
+<para>
+The current version (as of v&ggrtfver; release) has modules
+for following character classes:
+</para>
+<itemizedlist>
+ <listitem><para><link linkend="usage-magical">Mages</link> (<ulink url="http://www.bat.org/help/guilds?str=The+Brotherhood+of+Wizardry">The Brotherhood of Wizardry</ulink>)</para></listitem>
+ <listitem><para><link linkend="usage-chann">Channellers</link> (<ulink url="http://www.bat.org/help/guilds?str=The+Guild+of+Channellers">The Guild of Channellers</ulink>)</para></listitem>
+ <listitem><para><link linkend="usage-merchant">Merchants</link> (<ulink url="http://www.bat.org/help/guilds?str=The+Master+Merchants">The Master Merchants</ulink>)</para></listitem>
+ <listitem><para><link linkend="usage-barb">Barbarians</link> (<ulink url="http://www.bat.org/help/guilds?str=Barbarian+Guild">Barbarian Guild</ulink>)</para></listitem>
+ <listitem><para><link linkend="usage-loc">LoCs</link> (<ulink url="http://www.bat.org/help/guilds?str=Lords+of+Chaos">Lords of Chaos</ulink>)</para></listitem>
+ <listitem><para><link linkend="usage-tarma">Tarmalens</link> (<ulink url="http://www.bat.org/help/guilds?str=The+Followers+of+Tarmalen">The Followers of Tarmalen</ulink>)</para></listitem>
+ <listitem><para><link linkend="usage-druid">Druids</link> (<ulink url="http://www.bat.org/help/guilds?str=The+Humble+Druids">The Humble Druids</ulink>)</para></listitem>
+ <listitem><para><link linkend="usage-nun">Nuns</link> (<ulink url="http://www.bat.org/help/guilds?str=Sisters+of+Las">Sisters of Las</ulink>)</para></listitem>
+ <listitem><para><link linkend="usage-spiders">Spiders</link></para></listitem>
+ <listitem><para><link linkend="usage-tiger">Tigers</link></para></listitem>
+ <listitem><para><link linkend="usage-alchemist">Alchemists</link></para></listitem>
+</itemizedlist>
+
+<para>
+In non-guild related sense, GgrTF has most of the basics expected from
+such triggerset. There is a <link linkend="usage-general-prots">prot-management and reporting
+system</link>, <link linkend="usage-general-skillspell">skill</link>- and
+<link linkend="usage-magical">spell</link>-handling, way to
+easily <link linkend="usage-general-commands">run commands on each battle round</link>
+(and more), plus following special modules:
+</para>
+
+<itemizedlist>
+ <listitem><para><link linkend="usage-pssmangle">'pss'-output mangler</link></para></listitem>
+ <listitem><para><link linkend="usage-hstats">Hit statistics counter</link></para></listitem>
+ <listitem><para><link linkend="usage-spellnames">Spellchants to names translator</link></para></listitem>
+ <listitem><para><link linkend="usage-pplacer">Party member autoplacer</link></para></listitem>
+ <listitem><para><link linkend="usage-ptracker">Party prot tracker</link></para></listitem>
+ <listitem><para><link linkend="usage-rpouch">Reagent pouch helper</link></para></listitem>
+ <listitem><para><link linkend="usage-identify">Identify spell beautifier</link></para></listitem>
+</itemizedlist>
+
+<para>
+And more ...
+</para>
+</section>
+
+<!-- ================================================ -->
+
+<section id="isggrtfforme"><title>Is GgrTF for Me?</title>
+<para>
+It is impossible to tell for certain, really. If you are averse
+of doing some digging of your own, or adjusting some trigger code,
+it may not be. GgrTF is meant to work as a "platform" and a base,
+not as a complete bells and whistles-type solution.
+In the end, you may have just to give it a try.
+</para>
+
+<para>
+When I started working on GgrTF,
+I was just "scratching an itch", and that itch still continues,
+though few others have joined my efforts on scratching.
+During the two years I have been developing GgrTF, most of that
+time I've been scratching my own back, doing stuff mostly for myself.
+Thus, if you like the design decisions and features I like,
+play the same guilds as I (though some guilds which I haven't
+ever touched are supported through efforts of other developers)
+it is likely that you will like GgrTF.
+</para>
+
+<para>
+Also GgrTF is not all that well documented (although that is one
+thing we are trying remedy) and <emphasis>requires basic knowledge of
+how &tfurl;</emphasis> and its macro language works. As such GgrTF
+is not a ready out-of-the-box experience for some users and never
+will be. <emphasis>However, if you are able to crank it up and working,
+and are content with what is readily offered, then it might be something
+for you.</emphasis>
+</para>
+
+<para>
+All in all, GgrTF <emphasis>might</emphasis> be something for you,
+especially if you like things the way I like them. But on the other
+hand GgrTF might not be for you, and there are several alternatives
+out there for those who do not find it satisfactory. Below I have
+tried to list some pros and cons of using GgrTF.
+</para>
+
+<itemizedlist>
+ <listitem><para>Pros:</para>
+  <itemizedlist>
+   <listitem><para>Good general quality of code. As somebody put it,
+"you do not instantly get a headache from just looking at the code."</para></listitem>
+   <listitem><para>Modularity, easily extendable for most part.</para></listitem>
+   <listitem><para>Updated regularly, most bugs get fixed in upstream.</para></listitem>
+   <listitem><para>User-level documentation exists.</para></listitem>
+  </itemizedlist>
+ </listitem>
+
+ <listitem><para>Cons:</para>
+  <itemizedlist>
+   <listitem><para>Only small number of &batmudurl;'s guilds are specifically supported.</para></listitem>
+   <listitem><para>Requires bit more programming knowledge than some other solutions.</para></listitem>
+   <listitem><para>Due to nature of the developer's reincs, is biased
+towards caster-type functionality than tanks. Thus the support for tank
+guilds is not very good, although some guilds are supported.</para></listitem>
+  </itemizedlist>
+ </listitem>
+
+</itemizedlist>
+</section>
+
+<!-- ================================================ -->
+
+<section id="ggrtfhistory"><title>History of GgrTF</title>
+<subtitle>As told by Ggr</subtitle>
+
+<para>
+<emphasis>Way back in march of 2004, I made one of the worst
+mistakes in my life - I created a character in &batmudurl;.</emphasis>
+
+I never thought of myself to be much of a gamer, I've always
+been more interested in more technical things, programming
+and a little bit of digital electronics and hardware, so
+mostly my gaming experience consisted of some c64 games,
+Nethack and some CRPGs like Fallout. I guess the RPG statmania
+was one reason that got me hooked in the first place, plus
+the multiplayer interaction and social aspects.
+</para>
+
+<para>
+Started off playing with plain telnet for the first month or so,
+then installed &tfurl;, because it seemed to be the most popular
+of the clients available for UNIXish platforms. First I didn't use
+any triggers at all, TF was just there to work as better terminal
+and separating the input from output .. and the game was confusing
+enough to start with, triggers would have just complicated things.
+At least I felt so back then.
+</para>
+
+<para>
+At some point, however, my playing style advanced and need for
+automating certain things became apparent. I researched some of
+the available scripts, but most of them were either badly designed,
+full of very apparent mistakes and bugs, or simply not maintained
+anymore. Some people (highbies mainly) seemed to have some good stuff,
+but as usual, they only shared inside small circles of their own.
+</para>
+
+<para>
+Fancying myself as a programmer of some sort, off I went, developing my
+own piece of turf, starting out very simple, expanding and improving
+when needed. That continued for about a year or a bit over, then the
+situation got out of hand - I started "releasing" GgrTF periodically
+on my &batmudurl; related web-page.
+</para>
+
+<para>
+The first ever released version of GgrTF was v0.3.0, which was extremely
+simple and hacky. It supported just channeller/mage stuff and had a broken
+prots management system. The 0.3.x-series continued up to 0.3.13 or so,
+after which some bigger changes were made and 0.4.0 was released.
+</para>
+
+<para>
+At some point of 0.4.x-series development, more people started noticing GgrTF.
+I believe some even started using it, or at least used parts of it in
+their own code. v0.4.x was somewhat short-lived, soon major restructuring
+was done in the prot management system and it was time for 0.5.0. As the
+development progressed, it soon again became apparent that bigger changes
+were needed ... v0.5.5 was the last stable release in that series.
+</para>
+
+<para>
+Development of the new features took somewhat longer time than originally
+expected, there were literally dozens of internal version landmarks
+(v0.5.6.x, v0.5.9.x, v0.5.10.x, v0.5.11.x and finally even v0.6.0-preX
+series), which preceeded the final v0.6.0-release in early august 2006.
+
+This new release marked a major improvement in code quality and number of
+features, and also this user's manual was included for the first time.
+It was also the first time when other people joined up and did some work
+on few features.
+</para>
+
+</section>
+
+<!-- ================================================ -->
+
+<section id="license"><title>GgrTF License</title>
+<para>
+GgrTF is copyrighted (except where mentioned otherwise)
+by Matti Hämäläinen (aka Ggr Pupunen) and
+distributed under the GNU General Public License version 2.
+</para>
+
+<para>
+Complete text of the GNU GPL v2 is included with the code in a file
+called COPYING.txt, and is also available
+<ulink url="http://www.gnu.org/licenses/gpl.html">here</ulink>.
+</para>
+</section>
+
+</chapter>
+
+<!-- *************************************************************** -->
+
+<chapter id="installation"><title>Installation</title>
+<para>
+This chapter assumes that you have already succesfully installed &tfurl;
+in your system and you know how to use it (basic commands, loading of
+macros, etc.) It is also assumed that you know how to use your operating
+system of choice, be it some flavour of UNIX or Windows, although some
+parts of the instructions are given in step-by-step manner.
+</para>
+
+<note>
+<para>
+Throughout this manual, when GgrTF files are referenced in configuration
+examples etc., I have used "<emphasis>ggrtf/</emphasis>" -directory as path
+where the script files are located relative to your "home directory".
+You may need to substitute it with whatever you have installed your copy of GgrTF
+files in.
+</para>
+</note>
+
+<para>
+There are basically two ways how to get GgrTF, release packages and
+the Mercurial-repository. Releases are considered as stable snapshots,
+which should be relatively bug-free, but releases are done somewhat
+infrequently and at least in this phase we don't backport bugfixes to
+release versions.
+</para>
+
+<para>
+If you are unsure which version to choose, use the latest packaged release.
+</para>
+
+
+<section id="inst-releases"><title>Releases</title>
+<para>
+To get the latest stable version, head to the downloads-section of 
+<ulink url="http://tnsp.org/~ccr/ggrtf/">GgrTF's homepage</ulink>
+and pick either the newest tarball (*.tar.gz) or zip-archive (*.zip):
+</para>
+<itemizedlist>
+ <listitem>
+  <para>*.tar.gz packages are for UNIX-like systems, such as Linux, *BSD,
+ etc. Please note that the ZIP-packages are meant for Windows only and WILL
+ NOT WORK under UNIX or OS X version of TinyFugue!</para>
+ </listitem>
+ <listitem>
+  <para>*.zip packages are for Windows version of TinyFugue (the files
+  have been converted to CRLF line endings.)</para>
+ </listitem>
+</itemizedlist>
+<para>
+Both package types also have equivalent PGP/&gnupgurl; signature files
+(*.asc), which can be used to cryptographically
+<link linkend="app-verify-sig">verify the authenticity</link> of files.
+</para>
+<para>
+To "install" the package, you simply unpack it to appropriate directory,
+typically under your home directory. Under UNIX-style system:
+</para>
+
+<userinput>cd $HOME</userinput>
+<userinput>tar xzvf ggrtf-&ggrtfver;.tar.gz</userinput>
+
+
+<para>
+After that, you should have directory $HOME/ggrtf/ with all the *.tf files in it.
+If so, you can continue to the <link linkend="inst-config">configuration part</link>.
+</para>
+
+</section>
+
+
+<section id="inst-mercurial"><title>Development version</title>
+<para>
+Another way to get GgrTF is to go to the very source, the
+development source repository. This repository contains the latest
+bleeding edge features, but is also a fast moving target. Changes
+are directly committed by developers almost in real time,
+sometimes what you download may be severely broken.
+Also the documentation will not be updated for every little change,
+so you may have to figure out and work around possible backward
+incompatibilities yourself.
+</para>
+
+<para>
+New features and bugfixes may sometimes be worth taking the risk.
+On the other hand, it is all up to what you want and whether you can
+manage to handle the possibly arising problems.
+</para>
+
+<para>
+We utilize &hgurl; (Hg) for GgrTF's version management. Mercurial
+is a freely available distributed version control system, for which
+there are clients available for most common platforms, including
+Windows, Linux and other flavours of UNIX.
+</para>
+
+<para>
+GgrTF's Mercurial repository is graciously hosted by &jeskko;
+at &pupuneturl;, and is available from following location:
+<ulink url="&hgrepourl;">&hgrepourl;</ulink>.
+The same URL can be used with a web browser to browse version history.
+</para>
+
+<section id="intro-checking-out"><title>Checking out</title>
+<para>
+You can download (aka "clone") the GgrTF repository with command line
+Mercurial client with following command:
+
+<userinput>hg clone &hgrepourl; dest_dir</userinput>
+
+In which <emphasis>"clone"</emphasis> means making a local copy of the
+repository under directory <emphasis>dest_dir</emphasis>.
+</para>
+
+<para>
+You will most probably want to download the repository to some
+specific place, personally I prefer to use ~/ggrtf/ (aka "ggrtf/"
+under user's home directory) under UNIX.
+Thus typically you would use following command:
+
+<userinput>hg clone &hgrepourl; ~/ggrtf</userinput>
+
+If you are using Windows, and wish to use the development version, you
+can use the regular Mercurial command line client, or a GUI interface
+such as <ulink url="http://tortoisehg.bitbucket.org/">TortoiseHg</ulink>.
+</para>
+
+<para>
+The procedures for cloning and updating your local copy of the repository
+are otherwise similar, except the directory/folder path is different,
+under Windows XP the path would be <emphasis>C:\Documents and Settings\&lt;username&gt;\ggrtf\</emphasis>.
+For example, if your username is "Ggr", you could use the following command:
+
+<userinput>hg clone &hgrepourl; "C:\Documents and Settings\Ggr\ggrtf\"</userinput>
+
+Under Windows Vista and 7, the path is of the format <emphasis>C:\Users\&lt;username&gt;\</emphasis>
+</para>
+
+</section>
+
+<section id="intro-updating"><title>Keeping up to date</title>
+<para>
+After you have checked out your own copy of GgrTF's code repository,
+you usually wish to periodically update it. This is done easily with
+the following commands:
+
+<userinput>cd ~/ggrtf</userinput>
+<userinput>hg pull</userinput>
+<userinput>hg update</userinput>
+
+Notice that since Mercurial is a distributed version management system, you can easily
+keep your own local changes by committing them (<emphasis>'hg ci'</emphasis>)
+and then, instead of using 'pull' and 'update', you can use 'hg fetch' to merge
+your local changesets automatically. Refer to Mercurial documentation.
+</para>
+<para>
+If you plan on making modifications to GgrTF, it is recommended that you familiarize
+yourself with the basics of Mercurial workflow, making commits, fetching, etc. It
+will help you with maintaining your changes locally or sending patches to us.
+</para>
+
+
+</section>
+
+</section>
+
+</chapter>
+
+<!-- ================================================ -->
+
+<chapter id="inst-config"><title>Configuration</title>
+<para>
+After extracting GgrTF files into the appropriate directory folder,
+you will need to create (or change) configuration for &tfurl; to load GgrTF
+modules and possibly change some of your settings in &batmudurl;.
+</para>
+
+<para>
+If you are upgrading GgrTF from a previous version, it is possible
+that you do not have to change your configuration. But it is neverthless
+recommended that you skim through this section, the ChangeLog and
+module-specific sections of this manual in case of any significant,
+backwards incompatible changes.
+</para>
+
+
+<section id="inst-config-tf"><title>TF configuration file</title>
+<para>
+Typical way to use GgrTF is to load the script modules at startup.
+This is accomplished via TinyFugue's configuration file, commonly
+referred as "tfrc", location of which depends on your operating
+system and environment.
+</para>
+
+<itemizedlist>
+ <listitem><para>
+  UNIX-like systems, like Linux:
+  <emphasis>~/.tfrc</emphasis> or <emphasis>$HOME/.tfrc</emphasis>
+  (aka a file named ".tfrc" in your user home directory.)
+ </para></listitem>
+
+ <listitem><para>
+  DruWare Win32 port of TF:
+  Windows XP/2k/NT - <emphasis>C:\Documents and Settings\username\tfrc</emphasis>,
+
+  Windows 7/Vista - <emphasis>C:\Users\username\tfrc</emphasis>
+ </para></listitem>
+</itemizedlist>
+
+<para>
+As a basis for your TF configuration, you can use the example-tfrc.txt
+provided with GgrTF. You will need to edit it to suit your guilds and
+certain settings. However, the example-tfrc is only a suggested layout
+of configuration, mostly to show the order GgrTF requires modules
+and settings to be loaded. It does not contain everything you can possibly
+do with TF.
+</para>
+
+<para>
+Take note of the order of how different parts of GgrTF are loaded and where
+certain variables are set. Important thing is to have the order right, certain
+modules depend on other modules, and while GgrTF will usually print warning message(s)
+if the depencies are not met, sometimes this is not possible and erratic behaviour
+will occur.
+</para>
+
+<screen>&exampletfrc;</screen>
+
+<!--
+- layout of recommended configuration
+- discussion about modules
+- bindings or not?
+-->
+
+<section id="inst-config-tf-locale"><title>Character set encoding and locales</title>
+<para>
+One thing that is out of scope of GgrTF itself, is the issue of character set
+translation and locales. This basically means the way different characters
+are encoded and interpreted, how different values map to characters and vice versa,
+for example a simple encoding might be A=1, B=2, C=3, etc.
+</para>
+
+<para>
+One of the first and most widely used character encodings on computer systems
+is known as <ulink url="http://en.wikipedia.org/wiki/ASCII">7-bit ASCII</ulink>.
+This encoding allows 128 symbols or characters, and was commonly used for decades.
+Unfortunately, 128 symbols is nearly not sufficient enough to represent all the
+different alphabets or symbols used around the world (scandinavian characters,
+cyrillic alphabet, etc.) Thus other encodings were invented, most of them
+incompatible with each other, until introduction of Unicode standard and especially
+<ulink url="http://en.wikipedia.org/wiki/UTF-8">Unicode UTF-8</ulink>.
+</para>
+
+<para>
+The de-facto character set used in BatMUD is called "ISO-8859-1" which is
+a 8-bit encoding that allows 7-bit ASCII characters and 8-bit encoding of
+scandinavian characters (A and O with dots, etc). This is mostly due to
+BatMUD's origin in Finland, where ISO-8859-1 has been most deployed.
+</para>
+
+<para>
+However, increasing number of systems are starting to use Unicode "UTF-8"
+encoding, and other encodings are also still used. Unicode is a good thing
+in itself, and UTF-8 allows compatible 7-bit ASCII characters, but 8-bit
+and over are not compatible with ISO-8859-1. This is why if your system
+uses UTF-8, other people in BatMUD may see your non-ASCII characters
+incorrectly.
+</para>
+
+<para>
+Now that we know the issue, what can we do? Sometimes the solution may
+be very simple, but in many cases rather complex and very dependant
+on your setup - e.g. where you run TF, is it a shell or running locally, etc.
+Below is a list of tips and pointers, which may be of some help.
+</para>
+
+<section id="inst-config-tf-locale-unix"><title>UNIX-likes / Linux</title>
+<para>
+ For Linux/UNIX, you need to have the ISO-8859-1 locale installed/configured.
+ How this is done depends on your OS distribution. For example in Debian,
+ you need to use <userinput>dpkg-reconfigure locales</userinput> and add
+ some ISO-8859-1 locale, for example <emphasis>en_US.iso88591</emphasis>.
+</para>
+
+<para>
+ On Ubuntu, things get a bit more complicated:
+</para>
+<orderedlist>
+ <listitem>
+  <para>
+  Edit /var/lib/locales/supported.d/local with your favorite editor,
+  and on the last line add: <emphasis>en_US.ISO-8859-1 ISO-8859-1</emphasis>.
+  It should look something like this:
+  </para>
+  <screen>en_US.UTF-8 UTF-8
+en_US.ISO-8859-1 ISO-8859-1</screen>
+ </listitem>
+ <listitem>
+  <para>
+  Then, run <userinput>sudo dpkg-reconfigure locales</userinput>
+  </para>
+ </listitem>
+</orderedlist>
+<para>
+ On other Linux distributions and UNIX-like platforms the methods
+ for installing locales vary. Your best bet is to
+ <ulink url="https://www.google.com/search?q=linux+install+locale+iso-8859-1">Use the Google</ulink>.
+</para>
+<para>
+ If your system is using some locale other than ISO-8859-1 such as UTF-8,
+ you will need to make the terminal use ISO-8859-1 despite the system-global
+ setting, or alternatively use some software like <ulink url="https://www.gnu.org/software/screen/">GNU Screen</ulink>
+ to "translate" between your system's and BatMUD's ISO-8859-1. Some
+ information about how to make GNU Screen do that, can be found
+ from this website: <ulink url="http://aperiodic.net/screen/terminal">http://aperiodic.net/screen/terminal</ulink>.
+</para>
+<para>
+ However, if you choose not to use 'screen', you will have to either
+ start your terminal program (inside which TinyFugue will run) with the
+ locale set to ISO-8859-1, OR if your terminal supports the feature,
+ use the following shell script wrapper which will use terminal
+ control codes to change the effective character translation.
+ <emphasis>This feature is not supported by all terminals, XTerm and
+ Rxvt are known to support it, however.</emphasis>
+ You will need to copy+paste the script, or download it
+ <ulink url="http://tnsp.org/~ccr/ggrtf/tf5.sh">from here</ulink>.
+</para>
+<screen>#!/bin/sh
+SAVE_LANG="$LANG"
+export LANG="en_US.ISO-8859-1"
+printf '\33]701;%s\007' $LANG
+
+/usr/bin/tf5 $*
+
+export LANG="$SAVE_LANG"
+printf '\33]701;%s\007' $LANG</screen>
+<para>
+ You should place the script in some directory in your $PATH. You
+ will also need to modify it to point to the correct TinyFugye executable,
+ (e.g. change "/usr/bin/tf5" if needed.) Name the script as something
+ like "mytf" or rename the real TinyFugue executable as "tf5-bin" and
+ the script as "tf5", changing the script to point to tf5-bin.
+</para>
+<para>
+ Remember to set the script executable by changing
+ its permissions, '<emphasis>chmod 0755 /some/where/scriptfile</emphasis>'
+ should do it.
+</para>
+<para>
+ The idea is that you run the script instead of TF directly. The
+ script changes your current locale and forces the terminal via
+ special terminal control code to use it, and changes it back
+ after TF exits.
+</para>
+</section> <!-- Unix-likes -->
+
+
+</section>
+
+<section id="inst-config-tf-term"><title>Terminal/keyboard issues</title>
+<para>
+You need to make sure that you have the correct keyboard module(s) loaded.
+For most Linux/UNIX terminals you want to load EITHER or BOTH 
+<emphasis>kbd-xterm.tf</emphasis> and <emphasis>kbd-tf5def.tf</emphasis>.
+For TF on Windows and Mac OSX, you may wish to use
+<emphasis>kbd-tf5def.tf</emphasis> only. You may need to experiment.
+</para>
+<para>
+Additionally, it may be necessary to enable the so-called "application mode"
+in your terminal.
+</para>
+<itemizedlist>
+ <listitem>
+  <para>In OSX terminal app, the setting can be found in <emphasis>Terminal /
+  Preferences / Setting / Advanced</emphasis> and turn on
+  "Allow VT100 application keypad mode".
+  </para>
+ </listitem>
+ <listitem>
+  <para>
+   In PuTTY, the application keypad mode should be enabled by default,
+   but if it is not, see the Features panel of PuTTY's configuration,
+   see <ulink url="http://the.earth.li/~sgtatham/putty/0.60/htmldoc/Chapter4.html#config-appkeypad">PuTTY documentation here</ulink>.
+  </para>
+ </listitem>
+</itemizedlist>
+</section> <!-- Terminal -->
+
+</section>
+
+
+<section id="inst-config-batmud"><title>BatMUD settings</title>
+<para>
+Next, log on in BatMUD and change following settings. <emphasis>It is
+probably best, if you use direct copy &amp; paste to set these, as most of
+them are required to be set exactly as shown here for GgrTF to work
+correctly.</emphasis>
+</para>
+
+<itemizedlist>
+ <listitem><para>Line 'cutter' setting:
+<userinput>cutter 9999</userinput>
+Theoretically, '<emphasis>cutter off</emphasis>'
+should be better, but in practice I have noticed that
+in certain things it simply does not work as expected.</para>
+</listitem>
+
+ <listitem><para>Short score format for regular BatMUD:
+<userinput>@@sc set H:{colorhp}/&lt;maxhp&gt; [{diffhp}] S:{colorsp}/&lt;maxsp&gt; [{diffsp}] E:{colorep}/&lt;maxep&gt; [{diffep}] $:&lt;cash&gt; [{diffcash}] exp:&lt;exp&gt; [{diffexp}]</userinput>
+</para>
+</listitem>
+
+ <listitem><para>Short score format for HardCore BatMUD (HCBat):
+<userinput>@@sc set H:{colorhp}/&lt;maxhp&gt; S:{colorsp}/&lt;maxsp&gt; E:{colorep}/&lt;maxep&gt; $:&lt;cash&gt; exp:&lt;exp&gt;</userinput>
+</para>
+</listitem>
+
+ <listitem><para>Enable automatic short score (required for automatic updating of HP/SP/EP values on statusline):
+<userinput>@@sc on</userinput>
+</para>
+<note><para>If you do not wish to not see the 'sc' lines, you can turn on '/gagsc' option.</para></note>
+</listitem>
+
+ <listitem><para>Prompt:
+<userinput>@@prompt PROMPT:&gt;</userinput>
+If you wish, you can add any BatMUD specific data to the prompt
+between ":" and "&gt;", this substring will be stored to "status_prompt" TF
+variable, which can be used in /gprompt. Read more in <link
+linkend="usage-general-prompt">prompt setup section</link>.</para>
+</listitem>
+
+ <listitem><para>Listen to battle round flags:
+<userinput>@@battle rounds</userinput>
+This setting is a toggle, make sure that you set it ON
+("Listening to round flags.") instead of off!
+</para>
+</listitem>
+
+ <listitem><para>Battle listen-level:
+<userinput>@@battle listen all 2</userinput>
+Listen level should be 2 or 3, if you are using hitstats.
+Otherwise it can be 1 or 0, if you prefer silence.
+</para>
+</listitem>
+</itemizedlist>
+
+<para>
+In case you do NOT want to change your settings to the way GgrTF needs
+them to be, your only option is to change the regex patterns in GgrTF's
+code to match your preferences (and redo the changes each time you
+upgrade GgrTF.)
+</para>
+</section>
+
+<!--
+<section id="inst-config-ggrtf"><title>GgrTF configuration</title>
+<para>
+</para>
+</section>
+-->
+
+</chapter>
+
+<!-- *************************************************************** -->
+
+<chapter id="usage-intro"><title>Usage</title>
+<para>
+This chapter describes the structure of GgrTF, what the 
+different modules included in GgrTF are and what functionality
+they provide. There are basically three flavours of modules: generic
+modules that are either required or optional and provide
+functionality unrelated to specific guilds; then there are
+guild-related modules, containing guild-specialties.
+</para>
+
+<para>
+Each module section has short introduction about what is provided
+and section with macro commands and variables available. Some modules
+also have additional information about usage and configuration
+with examples.
+</para>
+
+<!--
+<para>
+Following block-diagram represents the structure of GgrTF and
+how different components approximately relate to each other:
+</para>
+
+<screenshot>
+ <mediaobject>
+  <imageobject><imagedata fileref="blockdiagram.png" format="PNG" /></imageobject>
+  <imageobject><imagedata fileref="blockdiagram.eps" format="EPS" /></imageobject>
+  <textobject>
+   <phrase>GgrTF's internal structure</phrase>
+  </textobject>
+  <caption>
+   <para>Internal structure and relations of GgrTF components represented as
+block-diagram.</para>
+  </caption>
+ </mediaobject>
+</screenshot>
+-->
+
+<!-- ================================================ -->
+
+<section id="usage-general"><title>GgrTF core (ggrtf.tf)</title>
+<para>
+This is the main module and core of GgrTF. It contains helper
+macro functions used by all the other modules and is thus
+always required to be loaded.
+It also provides much of the basic functionality, such as:
+</para>
+
+<itemizedlist>
+ <listitem><para>
+<link linkend="usage-general-statusline">Statusline</link>.
+Provides nice, realtimeish view of your character's current
+condition, applied prots and other such information.
+</para></listitem>
+
+ <listitem><para>
+<link linkend="usage-general-prots">Prot management</link>.
+Keeps note of what prots have been cast at you, and provides this
+information in various ways.
+</para></listitem>
+
+ <listitem><para>
+<link linkend="usage-general-curses">Curse/degen/etc tracking</link>.
+Tracks what handicaps have been cast at enemies (non-partymembers).
+This information is most useful in eq-parties.
+</para></listitem>
+
+ <listitem><para>Battle round handling. Enables commands to be
+executed each battle round and autopss functionality.
+</para></listitem>
+
+ <listitem><para>
+<link linkend="usage-general-hbtick">Heartbeat and tick prediction</link>.
+Display prediction of next "tick" via a heartbeat counter.
+</para></listitem>
+
+ <listitem><para>Functions for binding command strings to macros,
+or to cast spells and use skills, with or without reporting to
+party channel. See <link linkend="usage-general-binds">bindings</link>
+section for more information.
+</para></listitem>
+
+ <listitem><para>Support for <link linkend="usage-general-saves">
+state-saving</link>. Most GgrTF settings can be saved to files
+and reloaded later (for example at startup) with /gsave and /gload
+commands.
+</para></listitem>
+
+ <listitem><para><link linkend="usage-general-prompt">Prompt
+ handling and mangling.</link>
+</para></listitem>
+
+ <listitem><para>Automatic "ripaction", which is performed when
+ your opponent (monster) dies. This way you can automate small
+ inconveniencies like looting and digging of graves.
+ </para></listitem>
+
+ <listitem><para>Keyboard movement handling and mapping. Bind your
+numpad keys to move around, either by walking, walking with peering
+in adjacent rooms (useful for merchants) or guiding your ship.
+Additional modes may be provided by other optional modules.
+</para></listitem>
+
+ <listitem><para>Enemy shape string highlighting and reformatting.
+You can make GgrTF mangle 'scan' command's output into
+more readable and convenient form.
+</para></listitem>
+
+ <listitem><para>Keep and display statistics about skills, spells
+ and whatnots. ("/stats" command)
+</para></listitem>
+
+ <listitem><para>
+  <emphasis>Consider-skill reporting</emphasis>:
+  Takes output of 'consider' skill and compresses the information
+  into one prettyprinted line, which is reported. Output is
+  name of the target, estimated experience worth and final
+  estimation of target's toughness.
+ </para></listitem>
+
+ <listitem><para>
+  <emphasis>Combat Damage Analysis reporting</emphasis>:
+  Triggers for reporting results of CDA-skill to party report-channel.
+ </para></listitem>
+
+ <listitem><para>
+  <emphasis>Purse contents prettyprinting</emphasis>:
+  Highlites and colorizes the output of 'look at purse', and
+  calculates total sum of money (in gold) contained in the purse.
+ </para></listitem>
+
+ <listitem><para>
+  <emphasis>Camping status handling and reporting</emphasis>:
+  Keeps note of whether you can use 'camping' skill. Reports
+  the hp/sp/ep gained from resting.
+ </para></listitem>
+
+ <listitem><para>
+  <emphasis>Ceremony status</emphasis>:
+  Tracks status of ceremony, and provides macro "/ceremony",
+  which executes ceremony skill only if ceremony is not active currently.
+ </para></listitem>
+
+ <listitem><para>
+  <emphasis>Path compression for map.tf</emphasis>:
+  TinyFugue distribution comes with map.tf, which
+  enables easy creation of walkpaths (See "/help map" in TF).
+  GgrTF adds an special purpose RLE compressor function, which
+  reduces the length of the paths. Additional command to output
+  the paths in format that is compatible with BatMUD's
+  "command"-aliases is also provided.
+ </para></listitem>
+
+ <listitem><para>
+  Plus numerous miscellaneous reporting- and helper-triggers.
+ </para></listitem>
+
+</itemizedlist>
+
+
+<section id="usage-general-commands">
+&sectmacros_1;
+</para>
+
+<!-- @commands -->
+<!-- @binds -->
+
+</section>
+
+</section>
+
+<!-- ================================================ -->
+
+<section id="usage-general-statusline"><title>Statusline</title>
+<para>
+Probably one of the first things that you notice in GgrTF
+is the statusline (or "statusbar" as some prefer). In GgrTF the
+&tfurl; statusline is used to display information that we've
+considered to be important enough for nearly real-time view.
+</para>
+
+<para>
+The basic one-row statusline of GgrTF is meant for compatibility,
+<link linkend="usage-tf5">TF5 support module</link> provides another
+version, enhanced to take advantage of newer TF5 beta features
+(TF 5.0 beta 7 or later required).
+</para>
+
+<para>
+Statusline is updated synchronously at ticks, skill- and spell
+castings and certain other events. <emphasis>This depends on
+your <link linkend="inst-config-batmud">BatMUD settings</link>
+being correctly set up.</emphasis> If HP/SP/EP etc. information does
+not appear, most likely your 'sc' setting is "wrong",
+and thus does not get parsed by GgrTF.
+</para>
+
+<screenshot>
+ <mediaobject>
+  <imageobject><imagedata fileref="statusbar.gif" format="GIF" /></imageobject>
+  <imageobject><imagedata fileref="statusbar.eps" format="EPS" /></imageobject>
+  <textobject>
+   <phrase>GgrTF statusline</phrase>
+  </textobject>
+  <caption>
+   <para>Example of typical basic GgrTF statusline.</para>
+  </caption>
+ </mediaobject>
+</screenshot>
+
+<orderedlist>
+ <listitem><para>Current hit points / hit points maximum.</para></listitem>
+ <listitem><para>Current spell points / spell points maximum.</para></listitem>
+ <listitem><para>Current endurance points / endurance points maximum.</para></listitem>
+ <listitem><para>[2 light green characters] Last moved direction.</para></listitem>
+ <listitem><para>["C"] Ceremony status. (Dark blue = inactive/no ceremony; White = ceremony active)</para></listitem>
+ <listitem><para>["S"] Spell status. (Dark blue = no spell going; White = spellcasting)</para></listitem>
+ <listitem><para>["K"] Skill status. (Dark blue = no skill going; White = using a skill)</para></listitem>
+ <listitem><para>["c"] Camping status. (Light green = ready to camp; Red = camping active/skill ongoing; Yellow = camping not available, or recovering from previous camping.)</para></listitem>
+ <listitem><para><link linkend="usage-general-prots">Currently active prots</link> in short format.</para></listitem>
+</orderedlist>
+
+<para>
+First three elements of the statusbar describe your character's
+current hit-, spell- and endurance-points. These values are
+color-coded for better visual clarity. One element shows
+current value and maximum value, as shown in screenshot below:
+</para>
+
+<screenshot>
+ <mediaobject>
+  <imageobject><imagedata fileref="statusbar_ep.gif" format="GIF" /></imageobject>
+  <imageobject><imagedata fileref="statusbar_ep.eps" format="EPS" /></imageobject>
+  <textobject>
+   <phrase>Endurance Points-part of statusline</phrase>
+  </textobject>
+  <caption>
+   <para>Example of how endurance points are shown. "E:" denotes Endurance,
+   "134" is the current value (colorcoded) and "246" is the maximum
+   endurance your character has.
+   </para>
+  </caption>
+ </mediaobject>
+</screenshot>
+
+</section>
+
+<!-- ================================================ -->
+
+<section id="usage-general-prompt"><title>Prompt configuration</title>
+<para>
+In addition to basic prompt handling, GgrTF offers very flexible and
+extensible way of presenting the game prompt. Internal TF variables
+can be shown, even simple TF macro snippets executed to show the prompt
+as the user wishes. Also, in GgrTF v0.6.11.3 and later, it is possible to
+have custom BatMUD data in the prompt (see 'help prompt' in BatMUD).
+</para>
+<para>
+To get started, you need to have a basic prompt setting in BatMUD,
+as it is required to have GgrTF handle it properly. The basic setting is
+presented below, and we'll get to the more complex ones later.
+
+<userinput>prompt PROMPT:&gt;</userinput>
+
+After setting the BatMUD prompt, you can start configuring how GgrTF
+"mangles" your prompt. This is done by using "/gprompt" command macro
+(or alternatively editing the saved configuration files and "set_gprompt"
+setting.) There are myriad of ways of how and what things can be done,
+mostly limited by your imagination. Some examples are presented below:
+</para>
+
+<orderedlist>
+ <listitem>
+  <para>
+   <userinput>/gprompt &gt;</userinput>
+   Set prompt to show only "&gt;" and nothing more.
+  </para>
+ </listitem>
+ <listitem>
+  <para>
+   <userinput>/gprompt %{status_cast}&gt;</userinput>
+   Show currently in-progress skill or spell in prompt.
+  </para>
+ </listitem>
+ <listitem>
+  <para>
+   <userinput>/gprompt @{BCred}%{status_cast}@{n}@{BCwhite}&gt;@{n}</userinput>
+   TinyFugue color attributes can be used also.
+  </para>
+ </listitem>
+ <listitem>
+  <para>
+   <userinput>/gprompt @{$[prgetnlite(status_hp,status_hpm)]}%{status_hp}@{n}@{BCwhite}&gt;@{n}</userinput>
+   Above would print your hp, lited similarly to the statusbar HP/SP/EP display.
+   It is possible to use almost any kind of substitutions and call TF functions.
+  </para>
+ </listitem>
+</orderedlist>
+
+<note><para>
+Using TF attribute formatting (e.g. colours) in prompt only works
+with TF 5.0 beta 8 and later. If running under earlier version, GgrTF
+disables this feature.
+</para></note>
+
+<para>
+As you can see, lots of things can be done, and only fraction of ideas
+are represented here. However, in addition to what GgrTF and TF offer,
+it is also possible to add BatMUD specific information into the prompt.
+As you remember, we set up the basic prompt above to "PROMPT:&gt;".
+The user definable data can be put between the colon (":") and greater than
+("&gt;") sign, and it gets parsed by GgrTF. Observe following example:
+
+<userinput>prompt PROMPT:&lt;hp&gt;/&lt;sp&gt;/&lt;ep&gt;|&lt;eqset&gt;&gt;</userinput>
+
+Above prompt setting would make the BatMUD prompt show something like:
+
+<userinput>PROMPT:663/636/333|spr&gt;</userinput>
+
+Where the numbers represent your hp, sp and ep, and 'spr' is the work
+eqset, as described by 'help prompt'. This string gets parsed into a TF variable
+called "status_prompt", which can be then used in GgrTF's prompt. Examples
+follow:
+</para>
+
+<orderedlist>
+ <listitem>
+  <para>
+   <userinput>/gprompt %{status_prompt}&gt;</userinput>
+   This simple example would just prompt the grabbed BatMUD data with
+   greater than sign in the end.
+  </para>
+ </listitem>
+ <listitem>
+  <para>
+   <userinput>/gprompt @{BCgreen}%{status_prompt}@{n}&gt;</userinput>
+   Same as above, but coloured bright green.
+  </para>
+ </listitem>
+</orderedlist>
+
+<para>
+The prompt can contain any BatMUD data, as long as it is formatted as
+"PROMPT:your data here&gt;".
+</para>
+
+</section>
+
+
+<!-- ================================================ -->
+
+<section id="usage-general-saves"><title>State-saving</title>
+<para>
+State-saving is an awfully awkward name for GgrTF's functionality for
+saving your settings and other interesting data for later
+retrieval. Settings get saved and thus restored later,
+but this functionality is not automatic by default, you have to set it
+up so if you wish - GgrTF only provides you the functions for loading
+and saving, making it to happen automagically is up to you.
+How to do this is discussed further below.
+</para>
+
+<section id="usage-general-saves-whatis"><title>What is saved?</title>
+<para>
+<emphasis>Almost</emphasis> all settings (hidden or visible)
+get saved, but there are certain global settings that you
+have to set yourself in your TF configuration. These
+settings are discussed in sub-section below.
+</para>
+
+<para>
+It should also be noted, that there are actually <emphasis>two
+different types of data (or variables) that is saved into two
+different files</emphasis>. In GgrTF, these two types of data
+are called <emphasis>pre- and post-init settings</emphasis>, and the
+two savefiles are named accordingly. Pre-init settings are
+variables that need to be defined before the main modules
+of GgrTF are loaded in TF's startup configuration (certain
+functionality depends on this). Post-init variables can
+(and sometimes <emphasis>must</emphasis>) be set after loading
+of all modules.
+</para>
+</section>
+
+<section id="usage-general-saves-special"><title>Special, non-saved variables</title>
+<para>
+There are currently three special GgrTF variables, which you have to
+set yourself in your TF's startup configuration (.tfrc).
+These variables <emphasis>MUST</emphasis> be set before loading
+of ANY GgrTF modules, otherwise things start breaking and the
+state-saving system does not work correctly.
+</para>
+
+<table><title>Special, non-saved variables</title>
+ <tgroup cols="3" align="left">
+  <thead>
+   <row>
+    <entry>Variable</entry>
+    <entry>Description</entry>
+    <entry>Example</entry>
+   </row>
+  </thead>
+  <tbody>
+   <row>
+    <entry>set_plrname</entry>
+    <entry>
+    Your character's name, written in correct case.
+    </entry>
+    <entry>/set set_plrname=Ggr</entry>
+   </row>
+
+   <row>
+    <entry>set_datapath</entry>
+    <entry>Path to the directory where you want your savefiles to reside. If
+left empty, current working directory is used (the directory you started TF
+from.)</entry>
+    <entry>/set set_datapath=</entry>
+   </row>
+
+   <row>
+    <entry>set_saveprefix</entry>
+    <entry>
+     This string is used as prefix of the two savefiles, so the actual
+     savefiles are "<emphasis>&lt;prefix&gt;pre.tf</emphasis>" and
+     "<emphasis>&lt;prefix&gt;post.tf</emphasis>". This is useful,
+     if you play regular BatMUD and HCBat, so you can use different values
+     for either.
+    </entry>
+    <entry>/set set_saveprefix=bat-</entry>
+   </row>
+
+  </tbody>
+ </tgroup>
+</table>
+
+</section>
+
+
+<section id="usage-general-saves-setup"><title>How to setup TF for state-saving</title>
+<para>
+Getting GgrTF's state-saving to work requires some changes to your
+TF configuration, and possibly setting up a savefile directory
+</para>
+
+<para>
+A simplified example configuration layout is presented below with only
+the state-saving related parts, please refer to
+<link linkend="inst-config-tf">setup</link>-section of this
+manual for a more detailed example. Pay close attention to the order
+how things are done, it is very important!
+</para>
+
+<screen>;; Set directory path where savefiles will be stored
+/eval /set set_datapath=%{HOME}/.ggrtf/
+
+;; Set prefix string for savefile names
+/eval /set set_saveprefix=bat-
+
+;; Load the special pre-init module which loads pre-init
+;; settings from the savefiles. This needs to be done
+;; before loading any other GgrTF modules.
+/gloadmod ggrtf-pre.tf
+
+;; Load GgrTF core module
+/gloadmod ggrtf.tf
+
+;; Load other additional modules
+/gloadmod gm-magical.tf
+; etc etc.
+
+;; Load and restore other previously saved settings.
+;; This should be done after loading any GgrTF modules.
+/gload
+</screen>
+
+<para>
+When you have edited your TF configuration, you need to (re-)start
+it, change settings the way you want them to be and finally issue
+"/gsave" command to get settings saved. <emphasis>After saving,
+you may also want to examine the pre-init -savefile, because it
+contains certain settings that cannot be changed run-time
+</emphasis>. So, here are the steps in short again:
+</para>
+
+<orderedlist>
+ <listitem><para>
+  <emphasis>Edit TF configuration (see example above)</emphasis>:
+  Add <emphasis>set_datapath</emphasis>, <emphasis>set_saveprefix</emphasis>
+settings and add commands to load <emphasis>ggrtf-pre.tf</emphasis> module
+and <emphasis>/gload</emphasis> command.
+  </para></listitem>
+  <listitem><para>
+  <emphasis>Re-start TF</emphasis>:
+  In order to create the initial savefiles with default settings,
+  you need to (re-)start TF, so that the save-state system is enabled.
+ </para></listitem>
+ <listitem><para>
+  <emphasis>Change settings</emphasis>:
+  Change GgrTF settings (listed via /opts etc.) to accommodate
+  your desires.
+ </para></listitem>
+ <listitem><para>
+  <emphasis>Save initial settings</emphasis>:
+  Issue "/gsave" to get settings saved.
+ </para></listitem>
+ <listitem><para>
+  <emphasis>Optionally edit pre-init settings</emphasis>:
+  Certain settings are saved into the pre-init savefile (actual
+  filename is dependant on what you set "set_saveprefix" to).
+  GgrTF does not offer any special interface to change these settings,
+  you have to edit this file by hand, if you wish to change the defaults.
+ </para></listitem>
+</orderedlist>
+
+</section>
+
+<section><title>How to make state-saving automatic</title>
+<para>
+In previous example, I only described how settings get restored
+(as TF loads and initializes GgrTF), but how to get settings
+saved automatically too?
+</para>
+
+<para>
+The answer lies in &tfurl;'s event hooks. It is possible to
+define a hook, which is executed when TF disconnects from a world.
+By setting this hook to perform "/gsave", we can automatize the
+process of saving settings. Add following line to your TF configuration:
+
+<userinput>/def -hDISCONNECT mydisconnect = /gsave</userinput>
+
+There is one gotcha: if you don't want to keep saving the statistical
+values, but only the settings, you may want to add a "/greset" in the soup:
+
+<userinput>/def -hDISCONNECT mydisconnect = /greset%;/gsave</userinput>
+
+</para>
+
+</section>
+
+
+&sectmacros_2;
+   <row>
+    <entry>/gsave</entry>
+    <entry>
+Save all GgrTF settings and certain other TF variables.
+</entry>
+   </row>
+   <row>
+    <entry>/gload</entry>
+    <entry>
+Load GgrTF settings. Only post-init settings get loaded by this command,
+to get pre-init settings in effect, you will have to restart TF.
+</entry>
+   </row>
+   <row>
+    <entry>/greset</entry>
+    <entry>
+Reset all skill/spell counters and statistics. Notice that issuing
+this command also requires executing of "/gsave" if you want to save
+the zeroed statistics, otherwise the currently saved statistics will be
+restored on next /gload.
+</entry>
+   </row>
+&sectmacros_end;
+
+</section>
+
+<!-- ================================================ -->
+
+<section id="usage-general-binds"><title>Command bindings</title>
+<para>
+GgrTF's core provides few macros for defining "bindings", which
+are a way to create commands that look like normal MUD commands
+but are actually intercepted by &tfurl; and executed appropriately.
+These bindings can be used to easily define shorthands for casting
+spells, using skills, executing macros, etc. GgrTF bindings offer
+an easy way to define skill/spell commands with automatic party
+reporting (or without it). <emphasis>Simply put, bindings are
+similar to BatMUD "command" aliases, but client-side and with
+extra abilities (but also with some limitations.)</emphasis>
+</para>
+
+<para>
+In GgrTF, there are <emphasis>optional pre-defined bindings</emphasis>,
+which can be enabled at your consideration. These pre-defined bindings
+are defined in the relevant modules, and can be enabled at load-time
+with a setting ("opt_bindings"). See below section <link
+linkend="usage-general-binds-setup">for enabling bindings</link>.
+</para>
+
+<para>
+Now, you might be asking why would anyone need bindings?
+Indeed, you can already use BatMUD's command aliases for such things, but
+the number of command aliases in BatMUD is limited and if you run out of
+space, you have to remove some less used ones. Sometimes you have to
+redefine lots just because you are reincarnating... and you can not execute
+macros with command aliases.
+</para>
+
+<para>
+There are many benefits to using bindings, but they do have some
+drawbacks:
+</para>
+
+<itemizedlist>
+ <listitem>
+  <para>
+   <emphasis>Limitations of TF's parsing</emphasis>:
+   Because of the nature how bindings are defined and parsed,
+   you can only use one binded command per line.
+   For example, let's assume "aoa" is binding to cast Armour of Aether
+   and "clair" is a binding to use clairvoyance. Thus, someone
+   might want to command:
+
+   <userinput>aoa ggr%;clair</userinput>
+
+   Unfortunately, this does not work as might be expected. Because TF does
+   not evaluate binding as an expression, the "ggr%;clair"-part
+   is used as a literal argument to "aoa" binding. In effect the
+   command would try to cast Armour of Aether at player "ggr%;clair".
+  </para>
+ </listitem>
+
+ <listitem>
+  <para>
+   <emphasis>BatMUD commands and GgrTF bindings cannot be mixed</emphasis>:
+   Because the bindings are actually intercepted by TF before the line gets
+   passed to BatMUD's parser, you can't combine multiple bindings or BatMUD
+   commands on the line. For example, assuming "aoa" is again a binding
+   and "hop" is an emote:
+
+   <userinput>hop jeskko;aoa ggr</userinput>
+
+   One might easily assume, that the result would be to first hop
+   around player or thing named Jeskko, and then cast Armour of Aether
+   at Ggr. Unfortunately the latter would just produce an error, as
+   it would be instead passed to BatMUD's interpreter and not handled
+   as a binding by TF!
+  </para>
+ </listitem>
+
+ <listitem>
+  <para>
+   <emphasis>Limitations of GgrTF's binding system</emphasis>:
+   There are certain limitations what kind of bindings you can define
+   with the current functionality provided by GgrTF. Bindings that
+   require complex parameters (more than one optional argument),
+   are not possible - you are better off using BatMUD's command
+   aliases for those.
+  </para>
+ </listitem>
+</itemizedlist>
+
+
+<section><title>Defining bindings</title>
+<para>
+Now we know the limitations of this system - let's see how to define some basic
+command bindings!
+</para>
+
+<screen>/prdefgbind -s"cere"    -c"/ceremony" -n
+/prdefcbind -s"nf"      -c"Neutralize Field" -n
+/prdefsbind -s"fire"    -c"Fire Building" -n</screen>
+
+<para>
+Above we have have listed all three (3) classes of binding defination
+macros supported by GgrTF. First defines a generic command binding
+to execute "/ceremony" macro when user commands "cere".
+Second binding defines a spell casting command to cast "Neutralize Field"
+when user commands "nf". And the third binding defines a skill
+usage command to use "Fire Building". So basically we have
+three types of bindings:
+</para>
+
+<itemizedlist>
+ <listitem><para>
+  <emphasis>/prdefgbind</emphasis>:
+  Defines a generic binding, in which the action ("-c" parameter)
+  can be almost anything, like a TF macro, or BatMUD command.
+ </para></listitem>
+
+ <listitem><para>
+  <emphasis>/prdefcbind</emphasis>:
+  Defines a casting binding, the action is the name of the spell
+  to be casted.
+ </para></listitem>
+
+ <listitem><para>
+  <emphasis>/prdefsbind</emphasis>:
+  Defines a skill usage binding, action argument being name of the
+  skill to be executed.
+ </para></listitem>
+</itemizedlist>
+
+<para>
+Each of these defination macros require at least two arguments:
+the name for the binding command ("-s" option) and the action ("-c" option).
+There are other optional arguments, which affect aspects of the
+command binding to be defined. The argument options and their
+meanings are listed below:
+</para>
+
+<table><title>Arguments common to all binding defination macros</title>
+ <tgroup cols="2" align="left">
+  <thead>
+   <row>
+    <entry>Option</entry>
+    <entry>Description</entry>
+   </row>
+  </thead>
+  <tbody>
+   <row>
+    <entry>-s"name"</entry>
+    <entry>Specifies the name of the command binding.
+    This is basically the string you type to use the command,
+    after which come the optional arguments.
+    </entry>
+   </row>
+   <row>
+    <entry>-n</entry>
+    <entry>
+    Tells GgrTF that the binding does NOT accept arguments.
+    Anything following the command binding invocation is ignored.
+    This also affects the possible reporting output of the binding.
+    </entry>
+   </row>
+  </tbody>
+ </tgroup>
+</table>
+
+<table><title>Arguments specific to generic bindings (/prdefgbind)</title>
+ <tgroup cols="2" align="left">
+  <thead>
+   <row>
+    <entry>Option</entry>
+    <entry>Description</entry>
+   </row>
+  </thead>
+  <tbody>
+   <row>
+    <entry>-c"action"</entry>
+    <entry>
+    Specifies the action, aka what the binding <emphasis>does</emphasis>.
+    For generic bindings, the action is a literal, so it can be a
+    TF macro or BatMUD command. 
+    </entry>
+   </row>
+  </tbody>
+ </tgroup>
+</table>
+
+<table><title>Arguments specific to spell casting and skill usage bindings (/prdefcbind and /prdefsbind)</title>
+ <tgroup cols="2" align="left">
+  <thead>
+   <row>
+    <entry>Option</entry>
+    <entry>Description</entry>
+   </row>
+  </thead>
+  <tbody>
+   <row>
+    <entry>-c"action"</entry>
+    <entry>
+    Specifies name of the spell to be cast or skill to be used.
+    </entry>
+   </row>
+   <row>
+    <entry>-d"message"</entry>
+    <entry>
+    This option overrides the default message string used for reporting
+    (see also option "-q" below).
+    </entry>
+   </row>
+   <row>
+    <entry>-q</entry>
+    <entry>
+    Makes the binding "quiet", suppresses any reporting. By default,
+    spell casting binding reports the action on party report-channel,
+    but specifying this option disables it.
+    </entry>
+   </row>
+  </tbody>
+ </tgroup>
+</table>
+
+<para>
+More examples, now with short explanations:
+</para>
+
+<table><title>Binding defination examples</title>
+ <tgroup cols="2" align="left">
+  <thead>
+   <row>
+    <entry>Definition</entry>
+    <entry>Description</entry>
+   </row>
+  </thead>
+  <tbody>
+   <row>
+    <entry>/prdefgbind -s"repu"	-c"/showrep"		-n</entry>
+    <entry>
+     Generic binding, which executes /showrep macro and takes no arguments.
+    </entry>
+   </row>
+   <row>
+    <entry>/prdefsbind -s"er"	-c"Enrage"		-n</entry>
+    <entry>
+     Skill binding for barbarian "Enrage" skill. Also takes no
+arguments.
+    </entry>
+   </row>
+   <row>
+    <entry>/prdefcbind -s"shelter"	-c"Shelter"		-n	-d"Sheltering ..."</entry>
+    <entry>
+     Spell casting binding, for casting conjurer spell "Shelter".
+     Takes no arguments and uses specific reporting string (default
+     would be "Shelter ...", but since it sounds bit stupid we want to
+     use "Sheltering ..." instead.)
+    </entry>
+   </row>
+   <row>
+    <entry>/prdefcbind -s"dmp"	-c"Dispel Magical Protection"</entry>
+    <entry>
+     Another spell casting binding for a conjurer spell, which takes
+     (and requires) a player's name as argument.
+    </entry>
+   </row>
+   <row>
+    <entry>/prdefcbind -s"sl"	-c"Star Light"		-q</entry>
+    <entry>
+     Yet another spell casting bind, this time for druid spell "Star Light".
+     Since this is a blasting spell, it is not really useful to report
+     that we are casting it, so we suppress any reporting. Argument is
+     accepted.
+    </entry>
+   </row>
+  </tbody>
+ </tgroup>
+</table>
+
+<para>
+As of now, you should be able to define bindings of your own. You can define
+them in your .tfrc or make another file for them.
+</para>
+
+</section>
+
+
+<section id="usage-general-binds-setup"><title>Enabling bindings</title>
+<para>
+A special variable called "opt_bindings" controls whether the various
+/prdef*bind macros will actually define any binding at all. If this
+variable is set to value "on", bindings will be defined, otherwise not.
+</para>
+<para>
+This is also the way how pre-defined GgrTF bindings are made optional.
+By defining "opt_bindings" before loading GgrTF modules, user
+can choose to enable or disable the default bindings, even "per-module"
+by changing the value of opt_bindings before each module loading in
+.tfrc.
+</para>
+<para>
+It should be noted, that "opt_bindings" is a saveable setting, that gets
+stored by /gsave and restored by ggrtf-pre.tf Please refer to
+<link linkend="inst-config">setup</link>- and <link
+linkend="usage-general-saves">state saving</link>- sections
+for more information.
+</para>
+</section>
+
+<section id="usage-general-binds-list"><title>Bindings listing</title>
+<para>
+All defined GgrTF bindings can be listed via the <emphasis>/binds</emphasis>
+command. Below is represented an commented example of such output.
+</para>
+<screen>
+,----------------.
+| GgrTF Bindings |
++----------------+----------------------------------------------------.
+| pprots         | G | /pprots                                  |   ? |
+| rpouch         | G | /rpouch                                  |   ? |
+| ad             | C | Aura Detection                           | Yes |
+| invis          | C | Invisibility                             | Yes |
+| float          | C | Floating                                 | Yes |
+| ww             | C | Water Walking                            | Yes |
+| seeinvis       | C | See Invisible                            | Yes |
+| seemagic       | C | See Magic                                | Yes |
+| cere           | G | /ceremony                                |   ? |
+| curses         | G | /curses                                  |   ? |
+| prots          | G | /prots                                   |   ? |
+`---------------------------------------------------------------------'
+</screen>
+<itemizedlist>
+ <listitem><para>1st column lists the binded command name</para></listitem>
+ <listitem><para>2nd column shows the type of the binding: "G" =
+general (for example a macro invocation); "C" = cast/spell; "K" = skill.</para></listitem>
+ <listitem><para>3rd column is the performed action, which has varying
+ meaning depending on the binding type. For skill and spell bindings,
+ corresponding skill/spell name is shown. Generic bindings show the actual
+ command executed.</para></listitem>
+ <listitem><para>4th and last column shows whether the binding produces
+ any report output; for generic bindings this is not applicable and shows
+ question mark ("?") instead.</para></listitem>
+</itemizedlist>
+
+</section>
+
+</section>
+
+<!-- ================================================ -->
+
+<section id="usage-general-prmove"><title>Keyboard numpad hooks</title>
+<para>
+GgrTF provides a mechanism for routing keyboard numpad bindings so that
+different functionality can be swapped in as needed. Core module offers
+three modes: walk (normal walking around); peer (walking around with
+automatic peering to adjacent directions, useful for <link
+linkend="usage-merchant">merchants</link>; ship (control ship movement).
+
+Certain other modules provide additional modes (see <link
+linkend="usage-tgtcast">targetted cast module</link>, utilized by
+<link linkend="usage-tarma">tarmalen</link> and <link linkend="usage-mage">mage</link>
+modules, for example.)
+</para>
+
+<note>
+<para>Keyboard hooks require working numpad, etc. key bindings. Modules
+are provided for two most common cases in <emphasis>kbd-*.tf</emphasis>
+files. Some terminals may require several kbd-* modules to be loaded,
+you may have to experiment. It is also possible that your terminal
+is not supported by those modules and you have to write your own,
+in such case you may try contacting &ggr; for assistance. However,
+it is also entirely possible that your terminal does not provide
+the required 'application mode' at all, which will make things difficult.
+</para>
+</note>
+
+&sectmacros_2;
+   <row>
+    <entry>/move [setting]</entry>
+    <entry>Set the mode used for numpad bindings. Valid values are
+     shown if command is given without arguments. Core GgrTF module
+     provides following three modes: <emphasis>move</emphasis>,
+     <emphasis>peer</emphasis> and <emphasis>ship</emphasis>
+    </entry>
+   </row>
+
+   <row>
+    <entry>/peer [regexp]</entry>
+    <entry>
+     Set the regular expression used for grepping the output of 'peer'
+     command used in "/move peer" mode.
+    </entry>
+   </row>
+
+   <row>
+    <entry>/cruise</entry>
+    <entry>Toggle ship cruising speed on/off (off = sail)</entry>
+   </row>
+&sectmacros_end;
+
+</section>
+
+<!-- ================================================ -->
+
+<section id="usage-general-prots"><title>Prot management</title>
+<para>
+One very important aspect of any script is the prot management.
+GgrTF contains a flexible and easy to extend prot management system,
+which supports basic, stacking and renewable prots. Special cases
+are also supported, like unstun and conjurer typeprots.
+</para>
+
+<para>
+For actually displaying the active prots information, GgrTF offers
+various methods. The <link linkend="usage-general-statusline">
+statusline</link> shows the currently active prots in short form
+(without duration times). Macro command "/prots" can be invoked to
+locally echo the active prots in long form.
+Finally, a special BatMUD emote, 'tweak', can be used to trigger
+reporting of active prots to party report-channel (the 'tweak' emote
+was chosen for this purpose due to it being the de-facto standard
+for prot reporting triggers.)
+</para>
+
+<para>
+Classes of prots supported by GgrTF are roughly the following:
+</para>
+
+<itemizedlist>
+ <listitem><para>Harmful effects/curses/handicaps</para></listitem>
+ <listitem><para>Basic utility prots (infravision, water walking, floating, invisibility, etc.)</para></listitem>
+ <listitem><para>Conjurer prots (minor- and major typeprots, stickyness)</para></listitem>
+ <listitem><para>Evil priest (protection from good, paranoia)</para></listitem>
+ <listitem><para>Tarmalen (unpain, blessing of tarmalen, lifelink, enhanced vitality)</para></listitem>
+ <listitem><para>Nun (protection from evil, soul shield, heavenly protection, mana shield)</para></listitem>
+ <listitem><para>Templar (shield of faith, blessing of faerwon)</para></listitem>
+ <listitem><para>Psionicist (levitation, force shield)</para></listitem>
+ <listitem><para>Druid (flex shield, earth power, earth skin, earth blood, vine mantle, regeneration)</para></listitem>
+ <listitem><para>etc...</para></listitem>
+</itemizedlist>
+
+<para>
+The string describing active prots consists of entries with
+abbreviated name of the prot, current duration (from casting),
+possible number of stackings and optional stickiness-indicator
+for sticky conjuprots. The entries are separated with vertical
+line character (sometimes called the pipe).
+Some examples of prot entries with explanations are shown in table below.
+</para>
+
+<table><title>Prot entries</title>
+ <tgroup cols="2" align="left">
+  <thead>
+   <row>
+    <entry>Entry</entry>
+    <entry>Description</entry>
+   </row>
+  </thead>
+  <tbody>
+   <row>
+    <entry>Unst[1m9s]</entry>
+    <entry>Unstun with duration of 1 minutes, 9 seconds.</entry>
+   </row>
+   <row>
+    <entry>+AoA[7m19s]</entry>
+    <entry>Sticky Armour of Aether.</entry>
+   </row>
+   <row>
+    <entry>Infra(2)[0m2s]</entry>
+    <entry>Infravision stacked at 2 levels.</entry>
+   </row>
+   <row>
+    <entry>Unst&lt;2&gt;[7m19s]</entry>
+    <entry>Unstun that has been weakened 2 times.</entry>
+   </row>
+   <row>
+    <entry>-Forget[3m5s]</entry>
+    <entry>'Forget' curse that has been active for 3 minutes and 5 seconds.</entry>
+   </row>
+  </tbody>
+ </tgroup>
+</table>
+
+<para>
+Simple example session featuring some protting action in GgrTF:
+</para>
+
+<screen>
+<userinput>tweak jeskko</userinput>
+
+You tweak Jeskko's nose mischievously.
+Jeskko [report]: Unst[1h1m13s]
+
+<userinput>unp jeskko</userinput>
+
+Ggr [report]: Unpain -&gt; jeskko
+GgrTF:  ---- SPELL START ----  (393)
+GgrTF: 'unpain' -&gt; jeskko
+Unpain: ##### [5]
+You skillfully cast the spell with greater haste.
+Unpain: ## [2]
+Unpain: # [1]
+GgrTF:  ---- SPELL DONE ----  in [3] rounds! [0m9s]
+You utter the magic words (unpain)
+You cast the spell successfully.
+H:506/506 [] S:805/941 [-136] E:246/246 [] $:6499 [] exp:68202 []
+Jeskko [report]: Unpain ON!
+
+<userinput>tweak jeskko</userinput>
+
+You tweak Jeskko's nose mischievously.
+Jeskko [report]: Unst[1h4m25s] | Unp[2m35s]
+</screen>
+
+
+&sectmacros_2;
+   <row>
+    <entry>/prots</entry>
+    <entry>
+Show any currently active prots on you. The output is only echoed
+locally, use BatMUD 'tweak me' emote to list prots to party
+report-channel.
+</entry>
+   </row>
+   <row>
+    <entry>/cprots</entry>
+    <entry>
+This command clears all prots on you. It is meant for those cases
+where GgrTF is either bugging and does not notice a prot dropping,
+or any other reason when you need to remove all prots at your
+discretion.
+</entry>
+   </row>
+   <row>
+    <entry>tweak &lt;target&gt;</entry>
+    <entry>
+BatMUD's 'tweak' emote is used to report prots to party
+report-channel.
+</entry>
+   </row>
+&sectmacros_end;
+
+</section>
+
+<!-- ================================================ -->
+
+<section id="usage-general-curses"><title>Curse management</title>
+<para>
+Often an important aspect while bashing those nasty eq-monsters dead,
+is to keep track of any handicapping spells or skills cast against the
+said monster. GgrTF's curse handling is made just for that, it
+tracks most common handicaps cast at non-partymembers.
+</para>
+<para>
+<emphasis>Notice! To work fully, this feature requires <link
+linkend="usage-pssmangle">PSS-mangler</link> module to be loaded
+and in use.
+</emphasis>
+While curse tracking does work without it, curses cast by other
+entities than party members will be counted also, which can be
+counterproductive.
+</para>
+
+&sectmacros_2;
+   <row>
+    <entry>/curses</entry>
+    <entry>
+Echo status of tracked curses to yourself (e.g. not shown to others.)
+</entry>
+   </row>
+   <row>
+    <entry>twirl &lt;target&gt;</entry>
+    <entry>
+BatMUD's 'twirl' emote is used to report curses to party report-channel.
+</entry>
+   </row>
+   <row>
+    <entry>/cursewarn</entry>
+    <entry>
+Toggles informing about curses that are soon about to expire. The
+warning occurse when 20% of the "maximum" curse duration is left.
+(These maximum durations are set in GgrTF's main module.)
+</entry>
+   </row>
+&sectmacros_end;
+
+</section>
+
+<!-- ================================================ -->
+
+<section id="usage-general-hbtick"><title>Heartbeat and tick prediction</title>
+
+<!--
+<note>
+<para>
+<emphasis>WARNING! There is a high likelihood, that this code may
+not work correctly in all situations.</emphasis> And if it doesn't,
+you can send complaints to nearest trashbin.
+</para>
+</note>
+-->
+
+<para>
+Since version 0.6.14, GgrTF provides an <emphasis>experimental</emphasis> feature for
+predicting heartbeat duration and ticks. This can be useful if you
+wish to time your regen breaks nicely, or when to enter combat again
+(heartbeat factors in with the so-called initial battle round, or 
+so called "zero round").
+</para>
+
+<para>
+The usage of this feature is simple: There is one new field displayed
+on the <link linkend="usage-general-statusline">statusline</link>, the
+value labeled as "T" shows number of heartbeats from last tick, next tick
+usually occurs at 9 or 10. It should always be 10, but due to how we
+"force" simulated HBs and interaction with fast metabolism, they will
+not always match the real ones.
+<emphasis>First tick after leaving battle will not usually be predicted
+correctly, but the situation should normalize after it.</emphasis>
+</para>
+
+<note>
+<para>
+You can also utilize a stethoscope, and it should, at least theoretically
+make the HB and tick prediction accurate, but who knows... fastmeta is a bitch.
+</para>
+<para>
+<emphasis>Stethoscope is an item, available from Arelium's tinkerer's toolshop.</emphasis>
+You can use it by applying, 'apply stethoscope to ggr'. Easiest way is to
+add that to your eqset swapping commands.
+</para>
+</note>
+
+
+<section id="usage-general-hbtick-details"><title>Technical details</title>
+<para>
+One might ask, how does this all work? This is where it gets
+a little bit murky, because we are largely working on assumptions
+on how things like heartbeat work in BatMUD. So it might not be
+correct, there may be things that have been overlooked, etc.
+</para>
+
+<para>
+First of all, here are some things that the predictor code assumes:
+</para>
+
+<itemizedlist>
+ <listitem><para>Heartbeat duration (delta) is 3.0 seconds to start
+ with, we adjust slowly towards the player's "real" average heartbeat
+ frequency.
+ </para></listitem>
+ 
+ <listitem><para>One tick is always 10 heartbeats.
+ </para></listitem>
+
+ <listitem><para>Battle rounds are always around ~3s,
+ not withstanding +/- lag and slight variation due to driver issues.
+ </para></listitem>
+
+ <listitem><para>
+ Spell rounds, cast and skill finishes occur on heartbeat.
+ Thus we can use these to time heartbeats, when filtering out fastmeta.
+ </para></listitem>
+</itemizedlist>
+
+<para>
+Basically what we do in the code is as follows:
+</para>
+
+<orderedlist>
+ <listitem><para>
+ Start a TF timer that runs gheartbeat_timer() at ~20Hz.
+ </para></listitem>
+
+ <listitem><para>
+ In gheartbeat_sc (ran on each 'sc') we check if we seem to have
+ ticked by checking sp/ep deltas against threshold values.
+ We also try to discard 'sc' events caused by things that
+ may not be heartbeats (fires, crystals, heal alls, etc.)
+ </para></listitem>
+
+ <listitem>
+
+  <para>In gheartbeat_timer() we check for:</para>
+  <itemizedlist>
+   <listitem><para>
+    Ongoing battle, check when last round went off, disable battle
+    if it was "too long" ago.
+   </para></listitem>
+   <listitem><para>
+    Check when last hb was, simulate / force a hb if it was too
+    long ago.
+   </para></listitem>
+   <listitem><para>
+    Check if we need to "force" a tick, and do that.
+   </para></listitem>
+  </itemizedlist>
+
+ </listitem>
+
+</orderedlist>
+
+<para>
+Based on these, we keep a running average of heartbeat duration
+to predict incoming heartbeats and ticks. The average starts at 3s,
+which is the basic BatMUD heartbeat without fast metabolism or such.
+</para>
+
+<note>
+<para>
+If you are interested in some debug-spam produced by the predictor,
+you can enable it via <emphasis>/set hb_debug=1</emphasis>
+</para>
+</note>
+
+</section>
+
+</section>
+
+<!-- ================================================ -->
+
+<section id="usage-general-skillspell"><title>Skill handling</title>
+<para>
+</para>
+</section>
+
+<!-- ================================================ -->
+
+<section id="usage-magical"><title>Magical guilds support (gm-magical.tf)</title>
+<para>
+Base module for all things magical. This module is <emphasis>required</emphasis>
+for supporting spells/casting. It is not necessary for being the receiving
+end of prots or such. Several modules are dependant on this module, most
+importantly those guild-specific modules that use magic.
+</para>
+
+<para>
+Even in the case your guild does not use magic spells (nomad guilds), having
+this module loaded is not harmful, so you can keep it in your configuration
+at all times.
+</para>
+
+<itemizedlist>
+ <listitem><para>Basic code for blast hit and resistance reporting
+ (some types, such as channeller guild blasts, are added by guild-specific modules).
+ </para></listitem>
+ <listitem><para>Spell round reporting. Enables you to optionally
+ spam your fellow players with information how many rounds are left
+ until your spell goes off.
+ </para></listitem>
+</itemizedlist>
+
+</section>
+
+<!-- ================================================ -->
+
+<section id="usage-pssmangle"><title>PSS-mangler (gm-pssmangle.tf)</title>
+<para>
+This module provides support for filtering the output of
+<emphasis>pss</emphasis> (<emphasis>party status short</emphasis>)
+-command. It captures the status and prettyprints it out as a
+3x3 table (as 9-man party formation) with player names and their
+status information in compact format.
+</para>
+
+<para>
+The HP/SP/EP values are coloured in accordance to what percentage the
+player currently has of his maximum.  Additionally varying colouring of
+player's name is used to indicate possible states of <emphasis>rest,
+unconsciousness, stun, formation, etc.</emphasis>.
+</para>
+
+<para>There is also an number indicator for <emphasis>number of rescuers
+</emphasis> when in stunned or unconscious state, but this is normally
+hidden. It appears on the left side of player's name, when available.
+</para>
+
+<para>
+This module hooks to GgrTF's autopss-functionality (toggleable with
+<link linkend="usage-general-commands">/autopss</link> option). A normally issued
+'pss' command does not trigger the mangling functionality, but you can use
+<emphasis>/pss</emphasis> macro or bind that to 'pss'. (See <link
+linkend="usage-general-binds">Bindings</link>-section for more information.)
+</para>
+
+<screenshot>
+ <mediaobject>
+  <imageobject><imagedata fileref="pss_normal.gif" format="GIF" /></imageobject>
+  <imageobject><imagedata fileref="pss_normal.eps" format="EPS" /></imageobject>
+  <textobject>
+   <phrase>Typical first row</phrase>
+  </textobject>
+  <caption>
+   <para>
+Typical output of PSS-mangler in a party with first row filled. Toivo
+and Jeskko are near their maximum hp/sp/ep, but Ggr has taken some
+damage (yellow HP) and is almost out of endurance points (red EP).
+</para>
+  </caption>
+ </mediaobject>
+</screenshot>
+
+<screenshot>
+ <mediaobject>
+  <imageobject><imagedata fileref="pss_stun.gif" format="GIF" /></imageobject>
+  <imageobject><imagedata fileref="pss_stun.eps" format="EPS" /></imageobject>
+  <textobject>
+   <phrase>Stunned</phrase>
+  </textobject>
+  <caption>
+   <para>
+In this screenshot example, Jeskko has become stunned (his name is
+coloured in bright red). Also, Jeskko has lost some hitpoints
+(dark green HP) and has only moderate amount of endurance left
+(light yellow EP). <emphasis>(No Jeskkos were actually harmed
+in producing this simulated situation.)</emphasis>
+</para>
+  </caption>
+ </mediaobject>
+</screenshot>
+
+<screenshot>
+ <mediaobject>
+  <imageobject><imagedata fileref="pss_uncon.gif" format="GIF" /></imageobject>
+  <imageobject><imagedata fileref="pss_uncon.eps" format="EPS" /></imageobject>
+  <textobject>
+   <phrase>Unconscious</phrase>
+  </textobject>
+  <caption>
+   <para>
+This screenshot shows how Toivo has taken some serious damage from
+a blast to the backrow, and has become unconscious. White on bright
+red background is used to highlight a unconscious player's name,
+hopefully catching your attention.
+</para>
+  </caption>
+ </mediaobject>
+</screenshot>
+
+
+<section><title>HP/SP/EP colours</title>
+<para>
+List of possible indicator colours and their meanings. &colourexplanation;
+</para>
+
+
+<table><title>List of HP/SP/EP indicator colours</title>
+ <tgroup cols="3" align="left">
+  <thead>
+   <row>
+    <entry>Colour</entry>
+    <entry>Background</entry>
+    <entry>Explanation</entry>
+   </row>
+  </thead>
+  <tbody>
+   <row>
+    <entry>Bright White</entry>
+    <entry>Bright Red</entry>
+    <entry>Negative value (x &lt; 0)</entry>
+   </row>
+   <row>
+    <entry>Bright Red</entry>
+    <entry>-</entry>
+    <entry>Less than 16% of max</entry>
+   </row>
+   <row>
+    <entry>Red (dark)</entry>
+    <entry>-</entry>
+    <entry>Less than 33% of max</entry>
+   </row>
+   <row>
+    <entry>Yellow (dark)</entry>
+    <entry>-</entry>
+    <entry>Less than 49% of max</entry>
+   </row>
+   <row>
+    <entry>Bright Yellow</entry>
+    <entry>-</entry>
+    <entry>Less than 66% of max</entry>
+   </row>
+   <row>
+    <entry>Green (dark)</entry>
+    <entry>-</entry>
+    <entry>Less than 85% of max</entry>
+   </row>
+   <row>
+    <entry>Bright Green</entry>
+    <entry>-</entry>
+    <entry>More than 85% of max</entry>
+   </row>
+  </tbody>
+ </tgroup>
+</table>
+</section>
+
+<section><title>Player name colours</title>
+<para>
+List of possible name colours and their meanings. &colourexplanation;
+</para>
+
+<table><title>List of possible player name lite colours</title>
+ <tgroup cols="3" align="left">
+  <thead>
+   <row>
+    <entry>Colour</entry>
+    <entry>Background</entry>
+    <entry>State description</entry>
+   </row>
+  </thead>
+  <tbody>
+   <row>
+    <entry>Bright White</entry>
+    <entry>-</entry>
+    <entry>Normal</entry>
+   </row>
+   <row>
+    <entry>Bright Black</entry>
+    <entry>-</entry>
+    <entry>Idle</entry>
+   </row>
+   <row>
+    <entry>Bright White</entry>
+    <entry>Bright Red</entry>
+    <entry>Unconscious (unc)</entry>
+   </row>
+   <row>
+    <entry>Bright Red</entry>
+    <entry>-</entry>
+    <entry>Stunned (stun)</entry>
+   </row>
+   <row>
+    <entry>Magenta</entry>
+    <entry>-</entry>
+    <entry>In form (form), or member (mbr)</entry>
+   </row>
+   <row>
+    <entry>Cyan</entry>
+    <entry>-</entry>
+    <entry>Resting/camping/meditating (rest)</entry>
+   </row>
+   <row>
+    <entry>Bright White</entry>
+    <entry>Blue</entry>
+    <entry>"Glaced" (NPC special)</entry>
+   </row>
+&sectmacros_end;
+
+<section>
+&sectmacros_1;
+</para>
+
+<table><title>Macro commands</title>
+ <tgroup cols="2" align="left">
+  <thead>
+   <row>
+    <entry>Command</entry>
+    <entry>Description</entry>
+   </row>
+  </thead>
+  <tbody>
+   <row>
+    <entry>/prettypss</entry>
+    <entry>Toggle 'pss' output mangling/prettifying. If set off, normal
+    plain 'pss' output is passed through unfiltered.</entry>
+   </row>
+   <row>
+    <entry>/pss</entry>
+    <entry>Show party status.</entry>
+   </row>
+   <row>
+    <entry>/autopss</entry>
+    <entry>Toggle automatic party status reporting. (Defined elsewhere)</entry>
+   </row>
+   <row>
+    <entry>/fullparty</entry>
+    <entry>If enabled, mangled output always shows full 3x3 party formation,
+    even if all rows aren't filled. When disabled, only the first used rows
+    are shown.</entry>
+   </row>
+   <row>
+    <entry>/diffpss</entry>
+    <entry>Shows diff-values of hp/sp/ep if enabled.</entry>
+   </row>
+  </tbody>
+ </tgroup>
+</table>
+</section>
+
+</section>
+
+<!-- ================================================ -->
+
+<section id="usage-pplacer"><title>Party Placer (gm-pplacer.tf)</title>
+<para>
+This module provides functionality for saving and restoring
+party formation (placement of members). Two simple to use macros can be
+issued to save the current formation and restore it as needed.
+Current flower BatMUD provides an in-game implementation via
+'party store' and 'party restore' commands, which may be preferable
+over this module for some people.
+</para>
+
+<para>
+<emphasis>However, the functionality of this module is somewhat
+better than the stock BatMUD commands, and will work under certain
+situations when the 'party restore' command does not, for example
+when some party members are missing from the room.
+</emphasis>
+</para>
+
+<para>
+NOTICE! This module requires
+<link linkend="usage-pssmangle">PSS-mangler</link> module to be loaded!
+</para>
+
+&sectmacros_2;
+   <row>
+    <entry>/ppsave</entry>
+    <entry>Save current party formation. Positions of party members
+    in current formation are stored.
+    </entry>
+   </row>
+   <row>
+    <entry>/ppreset</entry>
+    <entry>Resets or restores the party formation to the one saved
+    previously. Restoring occurs fully automatically.
+    </entry>
+   </row>
+&sectmacros_end;
+
+</section>
+
+<!-- ================================================ -->
+
+<section id="usage-ptracker"><title>Party Prots Tracker (gm-ptracker.tf)</title>
+<note><para>
+<emphasis>This module is practically obsolete and deprecated in flower BatMUD, because of
+the in-game 'party prots' command that does essentially the same thing.
+</emphasis>
+It is possible that this module will be removed in future.
+</para></note>
+
+<para>
+Module for showing prots (and similar effects) affecting your party members.
+Tracking these effects can be done in two separate ways: 1) Old way (compatible
+with HCBat also) is keeping account of different prot up/down messages on the
+party and report channels. 2) New way is via 'show effects' command available
+in the normal BatMUD. The 'show effects' method is recommended, because of
+generally better accuracy. <emphasis>It should also be noted that there is a
+difference in the output between these two methods. "Manually" tracked prots
+show elapsed time of the effect, but with 'show effects' mode, the remaining
+time is shown.</emphasis>
+</para>
+<note><para>
+Due to the way the up/down message tracking works, it depends on your
+party members to use <emphasis>working, non-broken</emphasis> triggers
+which use up/down messages that are recognizable to the ptracker module.
+However, this does not affect 'show effects' mode in any way.
+</para></note>
+
+<screen>
+.------------+-----+-----+-----+-----+-----+-----+-----+-----+
+|            | Flex|WarEs|EMelo|  AoA|MFire|  AoH|  Uns|  Unp|
++------------+-----+-----+-----+-----+-----+-----+-----+-----+
+|Blayke      | 0:07| 1:25| 0:49| 1:55| 1:43| 2:03|     |     |
+|Yar         |     | 1:25|     | 1:40| 0:07|     |21:34|     |
+|Kheldor     |     | 1:24| 0:48| 1:12| 0:41| 2:17|24:40|     |
+|Alorn       |     | 1:25| 0:49|     |     |     |     | 6:49|
+|Acentaja    |     | 1:25| 0:49|     |     | 1:31|     |     |
+|Malcom      |     | 1:25| 0:49|     |     | 1:10|     |     |
+|Jrj         |     |     |     |     |     | 6:22|     |     |
+|Daria       |     |     |     |     |     |     |     |     |
+|Ggr         |     | 1:25| 0:49|     |     |20:13|     |     |
+`------------+-----+-----+-----+-----+-----+-----+-----+-----+
+</screen>
+
+<para>
+<emphasis>NOTICE! This module requires
+<link linkend="usage-pssmangle">PSS-mangler</link> module to be loaded!
+</emphasis> Also remember to issue at least one "/pss" command after
+the party is formed, to make the party members known to PSS-mangler
+and prot tracker.
+</para>
+
+<note><para>
+It should be noted that the prot tracker only supports a limited set of
+effects, e.g. it only lists effects/prots that are widely considered to be
+of some interest in eq parties. Showing everything would just waste screen
+estate and make it less readable.
+</para></note>
+
+<!-- @commands -->
+<!-- @binds -->
+<!-- @keybinds -->
+
+</section>
+
+<!-- ================================================ -->
+
+<section id="usage-spellnames"><title>Spellwords translator (gm-spellnames.tf)</title>
+<para>
+This module adds in translating of spellwords to actual spell names.
+It is very much based on original work of &finger Cutter; and &finger Dazzt;,
+well known highbie BatMUD players. Their code is used and re-licensed
+under GPL with permission.
+</para>
+
+<para>
+The translator works by printing the spell name in parentheses
+on the line where the spellwords are. The translated name can
+optionally replace the spellwords or it can be printed after them.
+</para>
+
+<para>
+The spell name can be, if enabled, optionally printed in special
+colour formatting, which is based on the general class/type of the spell.
+This visual hinting can help you to notice if dangerous or 
+otherwise interesting spells are cast.
+</para>
+
+<para>
+Uncolorized examples of spellwords translator's output:
+</para>
+
+<screen>
+You utter the magic words (unstun)
+
+You utter the magic words 'Paxus' (unstun)
+
+Acolyte waves his index finger while uttering (flame arrow)
+
+Murrough throws a pinch of magic dust in air and chants (lightning storm)
+</screen>
+
+<!-- @commands -->
+
+</section>
+
+<!-- ================================================ -->
+
+<section id="usage-tgtcast"><title>Numpad targetted casting (gm-tgtcast.tf)</title>
+<para>
+</para>
+
+<note>
+<para>
+This module requires the <link linkend="usage-pssmangle">PSS-mangler</link> module.
+</para>
+</note>
+
+</section>
+
+<!-- ================================================ -->
+
+<section id="usage-hc"><title>HCBat support (gm-hcbat.tf)</title>
+<para>
+Due to the age of Hard Core BatMUD's current codebase and conceptual
+differences, several exceptions and workarounds are needed to
+improve GgrTF's compatibility with the HCBat environment.
+This module tries to provide the glue to make it happen.
+</para>
+
+<para>
+Purpose of this module is dissimilar to others, as it is meant
+to contain almost everything related to peculiarities and
+differences of HCBat. We do not have separate
+guild-specific modules for HCBat, the code needed to
+catch the differences is either in this module or in some
+special cases in the guild-specific modules.
+</para>
+
+<para>
+At the moment this module is rather simple, only replacing
+GgrTF's output macros to work around the lack of 'party report'
+-channel in HCBat. In future more functionality may be added,
+feel free to report bugs/incompatibilities to us.
+</para>
+
+</section>
+
+<!-- ================================================ -->
+
+<section id="usage-tf5"><title>TinyFugue 5 support (gm-tf5.tf)</title>
+<para>
+This is a special enhancement module for those who use GgrTF
+with &tfurl; version 5.0 (beta 7 and LATER). Although GgrTF should work with TF5
+without this module, you may wish to take benefit of the
+enhanced features designed for TF5 this module provides.
+</para>
+
+<note>
+<para>
+The code in this module uses features available on TF 5.0 beta 7
+and later, it will NOT work correctly in older betas!
+</para>
+<para>
+<emphasis>The functionality of the statusline depends on
+your <link linkend="inst-config-batmud">BatMUD settings</link>
+being correctly set up.</emphasis> If HP/SP/EP etc. information does
+not appear, most likely your 'sc' setting is "wrong",
+and thus does not get parsed by GgrTF.
+</para>
+</note>
+
+<screenshot>
+ <mediaobject>
+  <imageobject><imagedata fileref="statusbar_tf5.gif" format="GIF" /></imageobject>
+  <imageobject><imagedata fileref="statusbar_tf5.eps" format="EPS" /></imageobject>
+  <textobject>
+   <phrase>GgrTF statusline</phrase>
+  </textobject>
+  <caption>
+   <para>Example of typical basic GgrTF statusline in TF5.</para>
+  </caption>
+ </mediaobject>
+</screenshot>
+
+<itemizedlist>
+ <listitem><para>
+Enhanced 2-row statusline: First line contains HP/SP/EP- and
+skill/spell/etc- information as usual. Prot status has been
+moved to the second line.
+</para></listitem>
+
+</itemizedlist>
+
+<!--
+- example configuration
+- document special variables
+-->
+</section>
+
+<!-- ================================================ -->
+
+<section id="usage-rais"><title>Raise/Resurrect/New Body/etc. (gm-rais.tf)</title>
+<para>
+This module contains utility functionality for everyone who casts
+different types of dead raising spells, including "raise dead",
+"resurrect", "new body", "reincarnation", etc.
+</para>
+
+<para>
+Automatic list is kept of people who have accepted some such service
+from you, along with information what spell was requested. List can
+be viewed, and you can launch a cast at the latest accept or by
+specifying a player's name, cast his/her request.
+</para>
+
+<para>
+You can either directly use the macros or use <link
+linkend="usage-general-binds">command bindings</link>
+to have shorthand commands instead.
+</para>
+
+<screenshot>
+ <mediaobject>
+  <imageobject><imagedata fileref="rais_list.gif" format="GIF" /></imageobject>
+  <imageobject><imagedata fileref="rais_list.eps" format="EPS" /></imageobject>
+  <textobject>
+   <phrase>List of accepts</phrase>
+  </textobject>
+  <caption>
+   <para>
+An example output of "/aclist" macro, listing the players
+who have accepted services from you and respective requested
+spells for each. The time field shows how much
+time has passed from the accept.
+</para>
+  </caption>
+ </mediaobject>
+</screenshot>
+
+<table><title>Macro commands</title>
+ <tgroup cols="2" align="left">
+  <thead>
+   <row>
+    <entry>Command</entry>
+    <entry>Description</entry>
+   </row>
+  </thead>
+  <tbody>
+   <row>
+    <entry>/aclist</entry>
+    <entry>
+View list of people who have accepted something from you.
+</entry>
+   </row>
+   <row>
+    <entry>/accast [name]</entry>
+    <entry>
+Cast Last-type functionality. Without arguments casts the LATEST
+requested spell. Optionally you can specify a name of the player
+and the spell requested by him/her is cast.
+</entry>
+   </row>
+   <row>
+    <entry>/acclear</entry>
+    <entry>
+Clears the list. Useful, if the automatic removal
+malfunctions for some reason. (For example, if target
+uses 'pray' to become alive again, there is no message
+provided to the caster.)
+</entry>
+   </row>
+  </tbody>
+ </tgroup>
+</table>
+
+<!-- @binds -->
+
+</section>
+
+<!-- ================================================ -->
+
+<section id="usage-hstats"><title>Hit Statistics (gm-hitstats.tf)</title>
+<para>
+Provides triggers for automatic gathering of melee hit statistics.
+This functionality is not without limitations, in some cases hits may become
+erraneously counted (such as Templar guild 'holy strike' skill being counted
+as bludgeon strike) but it gives you a general impression about what kinds
+of hits you mostly deal out.
+</para>
+
+<para>
+Only certain weapon/hit types are currently supported by the code.
+In order to get any hit counts, you need to define what weapon types
+you use. Currently following general hit/weapon classes are supported:
+</para>
+
+<itemizedlist>
+ <listitem><para><emphasis>none</emphasis> - This is just a clear/off setting.</para></listitem>
+
+ <listitem><para><emphasis>bash</emphasis> - Blunt weapons (bludgeons, etc.)</para></listitem>
+ <listitem><para><emphasis>pierce</emphasis> - Impaling weapons (some polearms, some short blades.)</para></listitem>
+ <listitem><para><emphasis>slash</emphasis> - Slashing weapons (long blades, axes, some short blades, some polearms.)</para></listitem>
+ <listitem><para><emphasis>shield</emphasis> - Shield bash.</para></listitem>
+ <listitem><para><emphasis>whip</emphasis> - Whip hits.</para></listitem>
+ <listitem><para><emphasis>tiger</emphasis> - Tiger style martial arts.</para></listitem>
+ <listitem><para><emphasis>monk</emphasis> - Monk style martial arts.</para></listitem>
+ <listitem><para><emphasis>unarmed</emphasis> - Untrained unarmed attacks.</para></listitem>
+ <listitem><para><emphasis>claw</emphasis> - Natural unarmed claw attacks.</para></listitem>
+ <listitem><para><emphasis>bite</emphasis> - Biting attacks.</para></listitem>
+</itemizedlist>
+
+<note><para>
+It should be noted, that the code does not differentiate between
+wielded weapons or limbs. <emphasis>This means, that if you are wielding
+multiple weapons of same type, hits from those are counted as one weapon.
+Same applies to unarmed hits too, of course.
+</emphasis>
+</para></note>
+
+<para>
+Example of /hstats output:
+</para>
+<screen>
+,----------------------.
+| GgrTF Hit Statistics |
++-----------------------------------------------.
++-| Axes/Long blades     |----------------------|
+|horribly shred      :        (  0):     2 ( 11)|
+|shred               :        (  0):     7 ( 41)|
+|incise              :        (  0):     8 ( 47)|
+|tear                :     21 (  3):       (  0)|
+|cut                 :    462 ( 72):       (  0)|
+|lightly cut         :    157 ( 24):       (  0)|
+|                                               |
++-----------------------------------------------'
++-| Totals |-------------------------------------------+
+| Hits..: 640        ( 76%) | Crits: 17         (  2%) |
+| Misses: 192        ( 23%) | Total hit types: 6       |
++----------------------------------------------+-------'
+| Dodges..: 3          | Parries..:            |
+| Tumbles.:            | Stuns....:            |
+| Ripostes:            | Stun mano:            |
+`----------------------------------------------'
+</screen>
+
+<para>
+Format of hits described above is:
+| Hit name : number of hits of this type (percentage): number of crits of this type (percentage) |
+</para>
+
+<note><para>
+<emphasis>Hit stats REQUIRES the TF terminal window width
+to be 95 columns or more!</emphasis> If you are using TF in smaller
+smaller window and can't make it wider, then you are out of luck.
+</para></note>
+
+<!-- @commands -->
+<!-- @binds -->
+<!-- @keybinds -->
+
+</section>
+
+<!-- ================================================ -->
+
+<section id="usage-identify"><title>Identify output beautifier (gm-identify.tf)</title>
+<para>
+Provides a simpler and more readable view of 'identify' spell's output.
+Not all information can be caught gracefully, however, and thus you should
+refer to the raw output for details such as "tales" and other special information.
+</para>
+
+<para>
+The module also supports merchant belt's 'weigh' command for catching
+the item's weight, if the belt is worn and <emphasis>/havebelt</emphasis>
+setting of the merchant module is enabled.
+</para>
+
+<para>
+Example of output:
+</para>
+<screen>
++-| General |----------------------------------------------------------------+
+| Item....: a pair of stylish blue breeches                                  |
+| Name....: blue breeches                                                    |
+| Handles.: 'breeches', 'stylish blue breeches', 'silk breeches' and         |
+|           'pants'                                                          |
+| Names...: Molotov, Belse and Ekkivekki                                     |
+| Slots...: leg and leg                                                      |
+| Material: silk                                                             |
++----------------------------------------------------------------------------+
+| In game.: 2y, 104d, 16h, 13min and 58s   | Condition: great                |
+| Size....: somewhat small                 | Maxcond..: AWESOME              |
+| Worth...: 8851                           | Quality..: superb               |
+| Weight..: almost weightless              | Weight/kg: 0.050                |
++-| Stats |------------------------------------------------------------------+
+| insignificantly improve your wis                                           |
++-| Misc |-------------------------------------------------------------------+
+| Worn....: Ekkivekki for 48d, 17h, 13min and 9s, Prince charming for 2h,    |
+|           5min and 44s and Slobber for 157d, 14h, 48min and 52s            |
+| Wielded.:                                                                  |
++----------------------------------------------------------------------------+
+</screen>
+
+<!-- @commands -->
+<!-- @binds -->
+<!-- @keybinds -->
+
+</section>
+
+<!-- ================================================ -->
+
+<section id="usage-rpouch"><title>Reagent Pouch handler (gm-rpouch.tf)</title>
+<para>
+This module provides utilities for reagent pouch handling, especially useful
+for mages and merchants. It also has a reagent pouch mangler/beautifier,
+which attempts to make the pouch contents more readable.
+</para>
+
+<para>
+Example output (uncoloured) of looking at a reagent pouch:
+</para>
+<screen>
+This is a large pouch for the storing of reagents for spells. You can store
+reagents over reboots in this. It cannot hold anything else.
+Syntax: store &lt;item&gt; in &lt;this&gt;
+        extract [amount] &lt;item&gt; from &lt;this&gt; take &lt;power/standard/poor&gt;
+        set_default_reagent &lt;this&gt; to &lt;power/standard/poor&gt;
+transfer &lt;number&gt; &lt;reagent&gt; from &lt;here&gt; to &lt;there&gt; [take &lt;power level&gt;]
+Some commands allow the use of 'all' in places.
+It is labeled as 'pussi'.
+The label can be set with 'label' command.
+  578 | Acid Blast                ( 578,   0,   0) (Olivine powder)
+  477 | Acid Storm                ( 477,   0,   0) (Interlocked rings)
+  436 | Blast Vacuum              ( 436,   0,   0) (Bronze marble)
+  417 | Lightning Shield          ( 417,   0,   0) (Iron rod)
+  397 | Armour of Aether          ( 397,   0,   0) (Highsteel disc)
+  388 | Magic Eruption            ( 388,   0,   0) (Platinum hammer)
+  341 | Lava Blast                ( 341,   0,   0) (Granite sphere)
+  272 | Electrocution             ( 272,   0,   0) (Electrum wire)
+  263 | Aura of Wind              ( 263,   0,   0) (Leather bag)
+   91 | Golden Arrow              (  91,   0,   0) (Copper rod)
+   71 | Shield of Detoxification  (  71,   0,   0) (Amethyst crystal)
+It is surrounded by a yellow glow.
+This item is in superb condition.
+It looks very very heavy.
+</screen>
+
+<note><para>
+Currently only POWER reagents are handled by the /rpouch commands!
+Any standard or poor reagents will not be touched by the code in
+this module.
+</para></note>
+
+<!-- @commands -->
+
+</section>
+
+<!-- ================================================ -->
+
+<section id="usage-chann"><title>Guild: Channellers (gm-chann.tf)</title>
+<para>
+Game-elements specific to channellers guild are supported and
+enhanced by this module. At the moment, no special commands are
+provided, all things are automagic. This module requires the generic
+<link linkend="usage-magical">magical guilds support module</link>. 
+</para>
+
+<itemizedlist>
+ <listitem><para>
+  <emphasis>Channeller aura</emphasis>:
+  Keeps note of your aura status and duration. If aura is up,
+  it is notified in GgrTF's <link linkend="usage-general-statusline">statusline</link>.
+  If your aura is weakening, that also is noted, reminding you
+  to recharge.
+ </para></listitem>
+ <listitem><para>
+  <emphasis>Blast resistance reporting</emphasis>:
+  Adds support for channeller blasts into blast resistance
+  reporting feature of <link linkend="usage-magical">magical guilds module</link>.
+ </para></listitem>
+ <listitem><para>And other miscellaneous lesser features, such as
+ fail and fumble handling, mana transfer cap reporting, etc.
+ </para></listitem>
+</itemizedlist>
+
+<!-- @commands -->
+<!-- @binds -->
+<!-- @keybinds -->
+
+</section>
+
+<!-- ================================================ -->
+
+<section id="usage-mage"><title>Guild: Mages (gm-mage.tf)</title>
+<para>
+Provides command bindings for all mage blast types (singles and areas)
+and optional key bindings for blasting and conjurer prot casting.
+</para>
+
+<note><para>
+This module requires the generic
+<link linkend="usage-magical">magical guilds support module</link>.
+The keybinds require <link linkend="usage-tgtcast">targetted cast</link> module.
+</para></note>
+
+<!-- @commands -->
+<!-- @binds -->
+<!-- @keybinds -->
+
+</section>
+
+<!-- ================================================ -->
+
+<section id="usage-merchant"><title>Guild: Merchants (gm-merchant.tf)</title>
+<para>
+This module provides, in addition to basic skill/spell fail/fumble
+handling, several helper macros, which may ease your work as merchant.
+Many of the command macros support "autotargetting", which basically
+means that you can walk in outerworld and just type "/lj" for
+lumberjacking and "/mine" for mining and GgrTF usually knows what
+to do. Some macros require bit more specific arguments.
+</para>
+
+<para>
+There is also support for merchant belt, which can be enabled if
+you have one available. In case your belt is not complete or is
+totally non-existent, the system has semi-automatic tool wielding
+functionality: if you use /lj and then /mine, the macros will
+automagically change to proper tools (saw -&gt; hammer/pick). The
+system is not perfect and sometimes it may fail, however.
+</para>
+
+<para>
+Hint: Another useful module for merchants is the
+<link linkend="usage-rpouch">reagent pouch handler</link>. It provides
+several useful functions for handling reagents.
+</para>
+
+<para>
+Notice that you probably MUST redefine some of these
+macros and default settings in your TF configuration file!
+(See <link linkend="usage-merchant-settings">Settings</link>-section below.)
+</para>
+
+<note><para>
+In below table: (*) = autotargets, (!) = moves items to item target
+</para></note>
+
+<!-- @commands -->
+<!-- @binds -->
+<!-- @keybinds -->
+
+<section id="usage-merchant-settings">
+&sectvariables;
+   <row>
+    <entry>mtool_mine</entry>
+    <entry>Tool(s) for mining. Example: <emphasis>/set mtool_mine=pick 1,pick 2</emphasis></entry>
+   </row>
+   <row>
+    <entry>mtool_lj</entry>
+    <entry>Tool(s) for lumberjacking. Example: <emphasis>/set mtool_lj=saw</emphasis></entry>
+   </row>
+   <row>
+    <entry>mtool_bs</entry>
+    <entry>Tool(s) for blacksmithing.</entry>
+   </row>
+   <row>
+    <entry>mtool_cp</entry>
+    <entry>Tool(s) for carpentry.</entry>
+   </row>
+   <row>
+    <entry>mtool_gc</entry>
+    <entry>Tool(s) for gem cutting.</entry>
+   </row>
+   <row>
+    <entry>mtool_gb</entry>
+    <entry>Tool(s) for glassblowing.</entry>
+   </row>
+   <row>
+    <entry>mtool_ma</entry>
+    <entry>Tool(s) for masonry.</entry>
+   </row>
+   <row>
+    <entry>mtool_sw</entry>
+    <entry>Tool(s) for sewing.</entry>
+   </row>
+   <row>
+    <entry>mtool_sc</entry>
+    <entry>Tool(s) for sculpture skill.</entry>
+   </row>
+   <row>
+    <entry>mforge_*</entry>
+    <entry>Forges/workbenches for skills (similar to mtool_* variables)</entry>
+   </row>
+&sectvariablesend;
+
+
+</section>
+
+<!-- ================================================ -->
+
+<section id="usage-alchemist"><title>Guild: Alchemists (gm-alchemist.tf)</title>
+<para>
+Alchemist module provides several macros that can be very helpful with
+potion making and other alchemist activities. Commands for easier handling of
+herb jars and organ cans, command macro that automates potion mixing to great degree and
+additional helper for potion research.
+</para>
+
+<para>
+Potion research is a big part of alchemist guild activities, but also one of the more
+tedious ones. It requires juggling with organs, herbs and minerals, keeping book of findings, etc.
+GgrTF alchemist module will come to help, as it automates getting the herb and organ from your containers,
+submitting the finished potion concoction flask to authenticator and stores results in a text file.
+</para>
+
+<para>
+Furthermore, the said text file is written in a specific format, that can be used with
+an external utility called AlchTool, developed by Jeskko and yours truly (Ggr). This PHP-based
+web utility can greatly increase your potion research efficiency. Currently (as of March 2011)
+AlchTool is in "beta"-phase of version 2, but the code can be retrieved from Pupunen Mercurial
+repository at <ulink url="http://pupunen.net/hg/alchemy/">http://pupunen.net/hg/alchemy/</ulink>.
+</para>
+
+<para>
+Default location of the results text file is user's home directory, in file called <emphasis>alch_results.txt</emphasis>,
+but this can be changed by altering <emphasis>galch_file</emphasis> TF variable, for example:
+
+<userinput>/eval /set galch_file=%{HOME}/someotherfile.txt</userinput>
+
+You should put this, if you wish to, in your tfrc file AFTER the loading of alchemist module.
+</para>
+
+<!-- @commands -->
+<!-- @binds -->
+<!-- @keybinds -->
+
+</section>
+
+<!-- ================================================ -->
+
+<section id="usage-barb"><title>Guild: Barbarian (gm-barb.tf)</title>
+<para>
+Provides a translator for barbarian reputation bar, reputation
+difference calculator and handler for automated looting and burning.
+</para>
+
+<section>
+&sectmacros_1;
+</para>
+
+<table><title>Macro commands</title>
+ <tgroup cols="3" align="left">
+  <thead>
+   <row>
+    <entry>Binding</entry>
+    <entry>Macro</entry>
+    <entry>Description</entry>
+   </row>
+  </thead>
+  <tbody>
+   <row>
+    <entry>repu</entry>
+    <entry>/showrep</entry>
+    <entry>
+Prints your current reputation and reputation difference
+from previous invoking of the command.
+</entry>
+   </row>
+   <row>
+    <entry>lb</entry>
+    <entry>/lootburn</entry>
+    <entry>
+Starts looting and burning skill, lights a torch, waits for couple
+of seconds and drops corpses from inventory. After burning the torch
+is extinguished and current reputation printed out. Then action
+determined by "/burnaction"-setting (see below) is executed.
+If a skillbreak is detected, corpse dropping will be cancelled
+immediately.
+</entry>
+   </row>
+   <row>
+    <entry></entry>
+    <entry>/burnaction &lt;action&gt;</entry>
+    <entry>
+Sets the action done after finished burning. Available options are:
+<emphasis>none</emphasis>, <emphasis>cash</emphasis> (drop small coins)
+and <emphasis>noeq</emphasis> (drop low coins and noeq).
+</entry>
+   </row>
+&sectmacros_end;
+
+<!-- @commands -->
+<!-- @binds -->
+<!-- @keybinds -->
+
+</section>
+
+<!-- ================================================ -->
+
+<section id="usage-spiders"><title>Guild: Spiders (gm-spider.tf)</title>
+<para>
+Provides very basic management help for spider demons, plus lites for
+spider servants.
+</para>
+
+<!-- @commands -->
+<!-- @binds -->
+<!-- @keybinds -->
+
+</section>
+
+<!-- ================================================ -->
+
+<section id="usage-tiger"><title>Guild: Tigers (gm-tiger.tf)</title>
+<para>
+Reporting of succesful and failed 'tiger claw' hits, lites for
+claw and mak reputation gains.
+</para>
+
+<!-- @commands -->
+<!-- @binds -->
+<!-- @keybinds -->
+
+</section>
+
+<!-- ================================================ -->
+
+<section id="usage-tarma"><title>Guild: Tarmalens (gm-tarma.tf)</title>
+<para>
+Provides command bindings for most common tarmalen spells. Triggers
+for tracking latest heal alls cast (of course, only those that have
+'hit' you are counted.) Optional keybindings for heals, party heals, etc.
+</para>
+
+<note><para>
+This module requires the generic
+<link linkend="usage-magical">magical guilds support module</link>.
+The keybinds require <link linkend="usage-tgtcast">targetted cast</link> module.
+</para></note>
+
+<!-- @commands -->
+<!-- @binds -->
+<!-- @keybinds -->
+
+</section>
+
+<!-- ================================================ -->
+
+<section id="usage-druid"><title>Guild: Druids (gm-druid.tf)</title>
+<para>
+Barebones module with default bindings for some druid spells and
+support for fails/fumbles. You will probably also want to use
+the <link linkend="usage-rais">raise module</link>, which provides
+help for casting reincarnations (along with raises, resurrects, etc.)
+</para>
+
+<!-- @commands -->
+<!-- @binds -->
+<!-- @keybinds -->
+
+</section>
+
+<!-- ================================================ -->
+
+<section id="usage-nun"><title>Guild: Nuns (gm-nun.tf)</title>
+<para>
+Includes several useful functions for nuns, such as relic identification messages
+translator, useful command macros, prayer hour reminder (acts as a "prot"),
+simple task status keeper, counter+lite for accomplished tasks, turn message
+translator, etc.
+</para>
+
+<!-- @commands -->
+<!-- @binds -->
+<!-- @keybinds -->
+
+</section>
+
+<!-- ================================================ -->
+
+<section id="usage-loc"><title>Guild: (Old) Lords of Chaos (gm-oldloc.tf)</title>
+<para>
+Very barebones module with support for "blood" ripaction and
+fail/fumble handling.
+</para>
+
+<!-- @commands -->
+<!-- @binds -->
+<!-- @keybinds -->
+
+</section>
+
+</chapter>
+
+<!-- *************************************************************** -->
+
+<appendix id="support"><title>Support</title>
+
+<itemizedlist>
+ <listitem><para>Report bugs and feature-requests via our
+&trackerurl;. A checklist for reporting bugs:</para>
+  <itemizedlist>
+  <listitem><para>Before reporting a problem, use the search
+and browsing functionality of our &trackerurl; to check
+if your issue is already reported.
+</para></listitem>
+
+   <listitem><para>Take your time to <emphasis>think</emphasis>
+while writing, and before submitting your report. Good rule of
+thumb is to include all information that you think might be
+relevant, but no more than that!
+</para></listitem>
+
+  <listitem><para>
+Remember to include information about your system and environment,
+(*NIX/Linux/Windows), version of &tfurl; ("/ver" command in TF),
+and version of GgrTF ("/gver" command).
+</para></listitem>
+
+  </itemizedlist>
+ </listitem>
+ 
+ <listitem><para>We do not provide support for usage, please refer
+to the user's manual and only in case the issue is not documented,
+you might be eligible to ask about it.
+</para></listitem>
+
+ <listitem><para>Neither we provide technical support for extending
+GgrTF, nor documentation of the internals. You'll have to figure out
+the workings yourself.
+</para></listitem>
+
+ <listitem><para>Be ready to be contacted by developers, in case
+help and/or more information is required with debugging your issue(s).
+</para></listitem>
+
+ <listitem><para>Remember not to bother the developers via tells
+too much, we want to play the game too, instead of just answering
+your questions and resolving problems.
+</para></listitem>
+
+<!--
+ <listitem><para></para></listitem>
+-->
+</itemizedlist>
+
+<section id="patches"><title>Sending patches/corrections</title>
+<para>
+If you have prepared a fix for some bug or a new feature, you can send us a patch.
+<emphasis>A changeset patch made against current Mercurial repository head/tip is highly preferred</emphasis>,
+short instructions on how to do that can be found below. You will probably need to refer to
+<ulink url="http://www.mercurial-scm.org/guide/">Mercurial guide</ulink> for generic
+Mercurial usage instructions and how to set it up. For making proper commits, you'll need to
+at the very least set up your username, etc.
+</para>
+<screen>
+# 1) Make changes to files
+$EDITOR ggrtf.tf
+
+# 2) Commit related changes to a changeset your local repository
+hg ci [filenames of changed files or nothing, if you wish to commit everything]
+
+# 3) Repeat steps 1 to 2 until satisfied
+
+# 4) Export your local changes to a bundle
+hg bundle mychanges.bz2 &hgrepourl;
+
+# 5) Send mychanges.bz2 to us (Ggr), as e-mail attachment ccr@tnsp.org
+     or alternatively attach it to an issue in our &trackerurl;.
+</screen>
+</section>
+
+</appendix>
+
+<!-- ================================================ -->
+
+<appendix id="faq"><title>Frequently Asked Questions (FAQ)</title>
+<qandaset>
+  <qandaentry>
+     <question>
+       <para>Is "Grizzt" included in the documentation?</para>
+     </question>
+     <answer>
+       <para>Unfortunately no. Grizzt may be included in some future version, though.</para>
+     </answer>
+  </qandaentry>
+
+  <qandaentry>
+     <question>
+       <para>When will next version of GgrTF be released?</para>
+     </question>
+     <answer>
+       <para>"When it's done."</para>
+     </answer>
+  </qandaentry>
+
+
+  <qandaentry>
+     <question>
+       <para>How to get rid of the battle round flag/marker?</para>
+     </question>
+     <answer>
+       <para>
+The BatMUD battle round marker (long line of asterisks "*") is required for
+GgrTF's internal functionality, but you can gag it with following piece of
+code (add it to your .tfrc or similar):
+</para>
+<screen>
+/test prlist_insert("event_battle_round", "myroundgag")
+/def -i myroundgag = /substitute -ag
+</screen>
+<para>
+The first line adds macro "myroundgag" to be executed on each round marker,
+the second line defines that macro and sets it to gag the round marker.
+</para>
+     </answer>
+  </qandaentry>
+
+
+  <qandaentry>
+     <question>
+       <para>My statusline is not updating, why? (HP/SP/EP values not updating)</para>
+     </question>
+     <answer>
+       <para>
+Maybe you haven't set up your 'short score' or 'prompt' in BatMUD or there is some
+typo in the setting. See <link linkend="inst-config-batmud">setup-section</link>
+for how to do that properly. If you wish that 'sc' line to not be visible, you can turn on '/gagsc' option.
+       </para>
+     </answer>
+  </qandaentry>
+
+  <qandaentry>
+     <question>
+       <para>How can I get my settings saved automatically? Or can I?</para>
+     </question>
+     <answer>
+       <para>Automatic saving and loading is possible, please refer to
+       <link linkend="usage-general-saves">state-saving</link>
+       and <link linkend="inst-config-tf">setup</link> -sections of
+       this manual for more information. 
+       </para>
+     </answer>
+  </qandaentry>
+
+  <qandaentry>
+     <question>
+       <para>A spell/prot cast by others at me registers in prot-reporting,
+       but does not work when I cast it on myself!</para>
+     </question>
+     <answer>
+       <para>
+       This is most likely a bug, please report the issue on GgrTF's
+       &trackerurl;. Remember to include the lines you get when you
+       cast the spell on yourself (aka the "prot goes up"-line).
+       </para>
+       <para>
+       Also see the next question below.
+       </para>
+     </answer>
+  </qandaentry>
+
+  <qandaentry>
+<!--
+     <question>
+       <para>Some prots do not register / are not noticed by GgrTF</para>
+     </question>
+-->
+     <question>
+       <para>Sometimes the <link linkend="usage-spellnames">
+       spellword translator</link> does not work, what gives?</para>
+     </question>
+     <answer>
+       <para>Your 'cutter'-setting might be too small, the default
+       in BatMUD is 80, which adds hard linefeeds too early on a line,
+       thus breaking many triggers of GgrTF, including GgrTF::Spellnames
+       module. 'cutter 9999' or 'cutter off' should fix this problem.
+       </para>
+       
+       <para>Please refer to <link linkend="inst-config-batmud">
+       BatMUD settings</link> -section of this manual for correct
+       in-game settings.
+       </para>
+     </answer>
+  </qandaentry>
+
+  <qandaentry>
+     <question>
+       <para>The <link linkend="usage-tf5">TF5 module</link> does not work! I am
+     using TF 5.0 beta 6 or older.</para>
+     </question>
+     <answer>
+       <para>
+       The functionality used by the TF5 module was introduced in TF 5.0 beta 7,
+       so you need to have that or a later version.
+       </para>
+     </answer>
+  </qandaentry>
+
+  <qandaentry>
+     <question>
+       <para>The keypad/numpad functionality (movement, targetting) is not working.</para>
+     </question>
+     <answer>
+       <para>
+       Make sure you have configured your terminal correctly,
+       refer to <link linkend="inst-config-tf-term">terminal configuration</link>
+       section for more information.
+       </para>
+     </answer>
+  </qandaentry>
+<!--
+  <qandaentry>
+     <question>
+       <para></para>
+     </question>
+     <answer>
+       <para>
+       </para>
+     </answer>
+  </qandaentry>
+-->
+</qandaset>
+
+</appendix>
+
+<!-- ================================================ -->
+
+<appendix id="app-verify-sig"><title>How to verify package signatures via
+GnuPG</title>
+<para>
+If you wish, you may verify the tarball package signatures with GnuPG,
+in case you want to be sure that you are getting unmodified files directly
+from the upstream. To do that, use the following commands:
+</para>
+
+<itemizedlist>
+ <listitem>
+  <para>
+   Retrieve Matti Hämäläinen's public key from a keyserver:
+   <userinput>gpg --keyserver wwwkeys.pgp.net --recv-keys 0x307BAAE3</userinput>
+  </para>
+ </listitem>
+ <listitem>
+  <para>
+   Verify the package signature (assuming you have downloaded both the file and signature):
+   <userinput>gpg --verify ggrtf-&ggrtfver;.tar.gz.asc</userinput>
+   If the data is untampered, you should get a result like 'gpg: Good
+   signature from "Matti Hamalainen (ccr) &lt;ccr@tnsp.org&gt;"'
+  </para>
+ </listitem>
+</itemizedlist>
+
+<para>
+Please refer to GnuPG or PGP documentation for more information about
+their usage. A great introduction to PKI, cryptography and public key
+signing, the <ulink url="http://www.gnupg.org/gph/en/manual.html">
+GNU Privacy Handbook</ulink> is available from GnuPG project.
+(Versions in other languages and formats, including PDF, are available
+from <ulink url="http://www.gnupg.org/documentation/guides.en.html">
+http://www.gnupg.org/documentation/guides.en.html</ulink>.)
+</para>
+</appendix>
+
+</book>

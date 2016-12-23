@@ -1,0 +1,86 @@
+;; Turn logging off, while we set things up
+/log off
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Personal settings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Set player name before loading scripts
+/eval /set set_plrname=Ggr
+
+;; Savefiles should be stored under $HOME/.ggrtf/
+/eval /set set_datapath=%{HOME}/.ggrtf/
+
+;; We want savefiles to use filename prefix "bat-"
+/eval /set set_saveprefix=bat-
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Character set / locale
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; You MAY need to set your character set encoding/locale to have
+;; non-ASCII characters work properly in BatMUD. This is outside of
+;; the scope of GgrTF, but it is discussed in more depth in the
+;; user's manual.
+
+;/setenv LANG=en_US.iso88591
+
+;; You may also try following settings if ISO-8859-1 does not work:
+; /setenv LANG=en_US.iso885915
+; /setenv LANG=en_US.latin1
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Load GgrTF
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; We define a helper macro to load modules from
+;; under user's home directory $HOME/ggrtf/
+/def -i gloadmod = /eval /load %{HOME}/ggrtf/%{*}
+
+;; Preloader module MUST be loaded first
+/gloadmod ggrtf-pre.tf
+
+;; And the main module after that ...
+/gloadmod ggrtf.tf
+
+;; Some useful modules: mangler, placer, spellname translator
+/gloadmod gm-pssmangle.tf
+/gloadmod gm-magical.tf
+/gloadmod gm-tgtcast.tf
+/gloadmod gm-pplacer.tf
+/gloadmod gm-spellnames.tf
+/gloadmod gm-tf5.tf
+
+;; Load additional modules now
+/gloadmod gm-rais.tf
+/gloadmod gm-tarma.tf
+/gloadmod gm-nun.tf
+
+
+;; Load previously saved settings after all modules are initialized
+/gload
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Load keyboard support files
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Bind some keys
+/gloadmod kbd-xterm.tf
+/gloadmod kbd-tf5def.tf
+
+;; Some personal keybinds here ...
+;/def -i -b'^[Om' = @smode
+;/def -i -b'^[Ok' = @cmode
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Re-start logging (examples below, uncomment one)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Log to tiny.log in CWD (current working directory)
+; /log on
+
+;; Log to tiny.log in user's home directory
+; /eval /log %{HOME}/tiny.log
+
+;; Log to tiny-YYYY-MM-DD.log in user's home directory
+; /eval /log %{HOME}/tiny-$[ftime("%Y-%m-%d")].log
+

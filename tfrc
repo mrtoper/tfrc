@@ -1,0 +1,6 @@
+/eval /setenv CONF_DIR %{HOME}/.tf
+/eval /setenv GGRTF_DIR %{CONF_DIR}/ggrtf
+
+/eval /load %{CONF_DIR}/worlds
+
+/eval /load %{CONF_DIR}/ggrtfrc

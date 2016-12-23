@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.43"
+   sodipodi:docbase="/home/ccr/tf/docs"
+   sodipodi:docname="blockdiagram.svg"
+   inkscape:export-filename="/home/ccr/tf/docs/blockdiagram.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1"
+     inkscape:cx="375.70466"
+     inkscape:cy="498.89133"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:grid-points="true"
+     gridspacingx="10px"
+     gridspacingy="10px"
+     inkscape:window-width="1064"
+     inkscape:window-height="803"
+     inkscape:window-x="71"
+     inkscape:window-y="58" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g2205"
+       transform="matrix(1.368567,0,0,1.171963,-3.021605,-179.7652)">
+      <rect
+         ry="16.376717"
+         y="855.71344"
+         x="11.007005"
+         height="187.41948"
+         width="723.42432"
+         id="rect1311"
+         style="fill:#8dbd88;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4.4828167;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         rx="14.024085" />
+      <text
+         transform="scale(0.933874,1.070808)"
+         id="text1315"
+         y="902.36774"
+         x="101.75574"
+         style="font-size:39.47473145px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           y="902.36774"
+           x="101.75574"
+           id="tspan1317"
+           sodipodi:role="line">TinyFugue (script interpreter)</tspan><tspan
+           id="tspan1319"
+           y="951.71115"
+           x="101.75574"
+           sodipodi:role="line" /></text>
+    </g>
+    <g
+       id="g2219">
+      <rect
+         ry="19.192898"
+         y="517.36218"
+         x="16"
+         height="123"
+         width="182"
+         id="rect2211"
+         style="fill:#49bdf2;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4.54251957;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         transform="scale(0.965127,1.036133)"
+         id="text2213"
+         y="549.69415"
+         x="43.05228"
+         style="font-size:20.72026634px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           y="549.69415"
+           x="43.05228"
+           id="tspan2215"
+           sodipodi:role="line">GgrTF::Misc</tspan><tspan
+           id="tspan2217"
+           y="575.59449"
+           x="43.05228"
+           sodipodi:role="line">(ggrtf-misc.tf)</tspan></text>
+    </g>
+    <rect
+       rx="19.192898"
+       style="fill:#d25895;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4.54251957;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2227"
+       width="182"
+       height="123"
+       x="209.2713"
+       y="517.09094"
+       ry="19.192898" />
+    <text
+       xml:space="preserve"
+       style="font-size:20.33293343px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="244.13155"
+       y="520.33698"
+       id="text2229"
+       transform="scale(0.913043,1.095238)"><tspan
+         sodipodi:role="line"
+         x="244.13155"
+         y="520.33698"
+         id="tspan2233">GgrTF::Magical</tspan><tspan
+         id="tspan2237"
+         sodipodi:role="line"
+         x="244.13155"
+         y="545.75314">(ggrtf-magical.tf)</tspan></text>
+    <rect
+       rx="19.192886"
+       style="fill:#8fd39c;fill-opacity:0.78918916;fill-rule:nonzero;stroke:#000000;stroke-width:2.95936036;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2241"
+       width="165.4633"
+       height="57.42181"
+       x="402.31979"
+       y="515.91406"
+       ry="19.192879" />
+    <text
+       xml:space="preserve"
+       style="font-size:13.74899197px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="443.32089"
+       y="510.18503"
+       id="text2243"
+       transform="scale(0.945921,1.057171)"><tspan
+         sodipodi:role="line"
+         x="443.32089"
+         y="510.18503"
+         id="tspan2245">GgrTF::PartyPlacer</tspan><tspan
+         id="tspan2247"
+         sodipodi:role="line"
+         x="443.32089"
+         y="527.37127">(ggrtf-pplacer.tf)</tspan></text>
+    <rect
+       rx="19.192886"
+       style="fill:#d9bd6d;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:2.95936036;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2271"
+       width="165.4633"
+       height="57.42181"
+       x="401.41068"
+       y="582.94037"
+       ry="19.192879" />
+    <text
+       xml:space="preserve"
+       style="font-size:13.74899197px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="442.35977"
+       y="573.58661"
+       id="text2273"
+       transform="scale(0.945921,1.057171)"><tspan
+         sodipodi:role="line"
+         x="442.35977"
+         y="573.58661"
+         id="tspan2275">GgrTF::PSSMangle</tspan><tspan
+         id="tspan2277"
+         sodipodi:role="line"
+         x="442.35977"
+         y="590.77285">(ggrtf-pssmangle.tf)</tspan></text>
+    <g
+       id="g2200"
+       transform="matrix(1.229153,0,0,0.866319,-2.189993,83.5145)">
+      <rect
+         rx="15.614727"
+         ry="22.154554"
+         y="654.64673"
+         x="12.434408"
+         height="183.33432"
+         width="513.13123"
+         id="rect2194"
+         style="fill:#fabd88;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:5.15098333;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         transform="scale(0.722554,1.383979)"
+         id="text2196"
+         y="554.75928"
+         x="126.16766"
+         style="font-size:48.55849838px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           y="554.75928"
+           x="126.16766"
+           id="tspan2198"
+           sodipodi:role="line">GgrTF core (ggrtf.tf)</tspan></text>
+    </g>
+    <rect
+       style="fill:#f9ec5b;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4.53723574;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2279"
+       width="82.024384"
+       height="157.73354"
+       x="652.65955"
+       y="652.36249"
+       rx="19.192898"
+       ry="19.192879" />
+    <text
+       xml:space="preserve"
+       style="font-size:11.3680582px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="742.68884"
+       y="647.53833"
+       id="text2281"
+       transform="scale(0.889758,1.123901)"><tspan
+         sodipodi:role="line"
+         x="742.68884"
+         y="647.53833"
+         id="tspan2289">GgrTF:PreInit</tspan><tspan
+         sodipodi:role="line"
+         x="742.68884"
+         y="661.7484"
+         id="tspan2293">(ggrtf-pre.tf)</tspan></text>
+    <rect
+       rx="19.192886"
+       style="fill:#94bdf2;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:2.95936036;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2314"
+       width="165.4633"
+       height="57.42181"
+       x="572.73633"
+       y="514.94037"
+       ry="19.192879" />
+    <text
+       xml:space="preserve"
+       style="font-size:13.74898815px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="649.6438"
+       y="509.26389"
+       id="text2316"
+       transform="scale(0.945921,1.057171)"><tspan
+         sodipodi:role="line"
+         x="649.6438"
+         y="509.26389"
+         id="tspan2318">GgrTF::HC</tspan><tspan
+         id="tspan2320"
+         sodipodi:role="line"
+         x="649.6438"
+         y="526.45012">(ggrtf-hc.tf)</tspan></text>
+    <g
+       id="g2332"
+       transform="matrix(0.909139,0,0,1,206.8623,68.44812)">
+      <rect
+         ry="19.192879"
+         y="513.91406"
+         x="401.55185"
+         height="57.42181"
+         width="182"
+         id="rect2334"
+         style="fill:#d9bdf2;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:3.10372114;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         rx="21.111059" />
+      <text
+         transform="scale(0.992064,1.007999)"
+         id="text2336"
+         y="533.08844"
+         x="423.6424"
+         style="font-size:14.41968727px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           id="tspan2338"
+           y="533.08844"
+           x="423.6424"
+           sodipodi:role="line">GgrTF::Spellnames</tspan><tspan
+           y="551.11305"
+           x="423.6424"
+           sodipodi:role="line"
+           id="tspan2340">(ggrtf-spellnames.tf)</tspan></text>
+    </g>
+    <rect
+       style="fill:#ff8626;fill-opacity:0.78918918;fill-rule:nonzero;stroke:#000000;stroke-width:3.67475772;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2389"
+       width="138.07541"
+       height="81.332619"
+       x="16.593174"
+       y="422.36218"
+       rx="19.192886"
+       ry="19.192879" />
+    <text
+       xml:space="preserve"
+       style="font-size:12.07526112px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="27.488104"
+       y="460.6496"
+       id="text2391"
+       transform="scale(1.006272,0.993767)"><tspan
+         sodipodi:role="line"
+         id="tspan2393"
+         x="27.488104"
+         y="460.6496">GgrTF::Channellers</tspan><tspan
+         sodipodi:role="line"
+         x="27.488104"
+         y="475.74367"
+         id="tspan2395">(ggrtf-chann.tf)</tspan></text>
+    <rect
+       style="fill:#ff8626;fill-opacity:0.78918918;fill-rule:nonzero;stroke:#000000;stroke-width:3.67475772;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2405"
+       width="138.07541"
+       height="81.332619"
+       x="162.91139"
+       y="423.36218"
+       rx="19.192886"
+       ry="19.192879" />
+    <text
+       xml:space="preserve"
+       style="font-size:12.07526112px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="172.89438"
+       y="461.65585"
+       id="text2407"
+       transform="scale(1.006272,0.993767)"><tspan
+         sodipodi:role="line"
+         id="tspan2409"
+         x="172.89438"
+         y="461.65585">GgrTF::Barbarian</tspan><tspan
+         sodipodi:role="line"
+         x="172.89438"
+         y="476.74993"
+         id="tspan2411">(ggrtf-barb.tf)</tspan></text>
+    <rect
+       style="fill:#ff8626;fill-opacity:0.78918918;fill-rule:nonzero;stroke:#000000;stroke-width:3.67475772;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2415"
+       width="138.07541"
+       height="81.332619"
+       x="308.21704"
+       y="423.36218"
+       rx="19.192886"
+       ry="19.192879" />
+    <text
+       xml:space="preserve"
+       style="font-size:12.07526112px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="335.40726"
+       y="463.6684"
+       id="text2417"
+       transform="scale(1.006272,0.993767)"><tspan
+         sodipodi:role="line"
+         id="tspan2419"
+         x="335.40726"
+         y="463.6684">GgrTF::LoC</tspan><tspan
+         sodipodi:role="line"
+         x="335.40726"
+         y="478.76247"
+         id="tspan2421">(ggrtf-loc.tf)</tspan></text>
+    <rect
+       style="fill:#ff8626;fill-opacity:0.78918918;fill-rule:nonzero;stroke:#000000;stroke-width:3.67475772;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2425"
+       width="138.07541"
+       height="81.332619"
+       x="454.02899"
+       y="422.36218"
+       rx="19.192886"
+       ry="19.192879" />
+    <text
+       xml:space="preserve"
+       style="font-size:12.07526112px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="462.19751"
+       y="460.6496"
+       id="text2427"
+       transform="scale(1.006272,0.993767)"><tspan
+         sodipodi:role="line"
+         id="tspan2429"
+         x="462.19751"
+         y="460.6496">GgrTF::Merchant</tspan><tspan
+         sodipodi:role="line"
+         x="462.19751"
+         y="475.74367"
+         id="tspan2431">(ggrtf-merchant.tf)</tspan></text>
+    <rect
+       style="fill:#ff8626;fill-opacity:0.78918918;fill-rule:nonzero;stroke:#000000;stroke-width:3.67475772;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2435"
+       width="138.07541"
+       height="81.332619"
+       x="599.07574"
+       y="422.36218"
+       rx="19.192886"
+       ry="19.192879" />
+    <text
+       xml:space="preserve"
+       style="font-size:12.07526112px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="606.34021"
+       y="460.6496"
+       id="text2437"
+       transform="scale(1.006272,0.993767)"><tspan
+         sodipodi:role="line"
+         id="tspan2439"
+         x="606.34021"
+         y="460.6496">GgrTF::Conjurer</tspan><tspan
+         sodipodi:role="line"
+         x="606.34021"
+         y="475.74367"
+         id="tspan2441">(ggrtf-conjurer.tf)</tspan></text>
+    <rect
+       style="fill:#ff8626;fill-opacity:0.78918918;fill-rule:nonzero;stroke:#000000;stroke-width:3.67475772;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2471"
+       width="138.07541"
+       height="81.332619"
+       x="16.593174"
+       y="331.36218"
+       rx="19.192886"
+       ry="19.192879" />
+    <text
+       xml:space="preserve"
+       style="font-size:12.07525826px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="40.40707"
+       y="369.07877"
+       id="text2473"
+       transform="scale(1.006272,0.993767)"><tspan
+         sodipodi:role="line"
+         id="tspan2475"
+         x="40.40707"
+         y="369.07877">GgrTF::Raise</tspan><tspan
+         sodipodi:role="line"
+         x="40.40707"
+         y="384.17284"
+         id="tspan2477">(ggrtf-rais.tf)</tspan></text>
+    <rect
+       style="fill:#ff8626;fill-opacity:0.78918918;fill-rule:nonzero;stroke:#000000;stroke-width:3.67475772;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2479"
+       width="138.07541"
+       height="81.332619"
+       x="162.91139"
+       y="332.36218"
+       rx="19.192886"
+       ry="19.192879" />
+    <text
+       xml:space="preserve"
+       style="font-size:12.07525921px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="172.89436"
+       y="370.08505"
+       id="text2481"
+       transform="scale(1.006272,0.993767)"><tspan
+         sodipodi:role="line"
+         id="tspan2483"
+         x="172.89436"
+         y="370.08505">GgrTF::Tarmalen</tspan><tspan
+         sodipodi:role="line"
+         x="172.89436"
+         y="385.17913"
+         id="tspan2485">(ggrtf-tarma.tf)</tspan></text>
+    <rect
+       style="fill:#ff8626;fill-opacity:0.78918918;fill-rule:nonzero;stroke:#000000;stroke-width:3.67475772;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2487"
+       width="138.07541"
+       height="81.332619"
+       x="308.21704"
+       y="332.36218"
+       rx="19.192886"
+       ry="19.192879" />
+    <text
+       xml:space="preserve"
+       style="font-size:12.07525921px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="335.40723"
+       y="372.0976"
+       id="text2489"
+       transform="scale(1.006272,0.993767)"><tspan
+         sodipodi:role="line"
+         id="tspan2491"
+         x="335.40723"
+         y="372.0976">GgrTF::Druid</tspan><tspan
+         sodipodi:role="line"
+         x="335.40723"
+         y="387.19167"
+         id="tspan2493">(ggrtf-druid.tf)</tspan></text>
+    <rect
+       style="fill:#ff8626;fill-opacity:0.78918918;fill-rule:nonzero;stroke:#000000;stroke-width:3.67475772;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2495"
+       width="138.07541"
+       height="81.332619"
+       x="454.02899"
+       y="331.36218"
+       rx="19.192886"
+       ry="19.192879" />
+    <text
+       xml:space="preserve"
+       style="font-size:12.07525826px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="468.16003"
+       y="371.09131"
+       id="text2497"
+       transform="scale(1.006272,0.993767)"><tspan
+         sodipodi:role="line"
+         id="tspan2499"
+         x="468.16003"
+         y="371.09131">GgrTF::Spiders</tspan><tspan
+         sodipodi:role="line"
+         x="468.16003"
+         y="386.18538"
+         id="tspan2501">(ggrtf-spiders.tf)</tspan></text>
+    <rect
+       style="fill:#d3d6ba;fill-opacity:0.78918916;fill-rule:nonzero;stroke:#000000;stroke-width:3.39739132;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2511"
+       width="250.76784"
+       height="473.76154"
+       x="749.37622"
+       y="336.77011"
+       rx="19.192886"
+       ry="19.192879" />
+    <text
+       xml:space="preserve"
+       style="font-size:27.76107788px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="1251.6134"
+       y="345.96481"
+       id="text2515"
+       transform="scale(0.614741,1.626701)"><tspan
+         sodipodi:role="line"
+         id="tspan2517"
+         x="1251.6134"
+         y="345.96481">Other, non-GgrTF scripts</tspan><tspan
+         sodipodi:role="line"
+         x="1251.6134"
+         y="380.66616"
+         id="tspan2519">and triggers</tspan></text>
+  </g>
+</svg>
